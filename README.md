@@ -60,9 +60,11 @@ TBD.
 # Citation
 If you  find this code useful for your research, please consider citing the following paper:
 
-    @inproceedings{gong2022posetriplet,
-      title      = {PoseTriplet: Co-evolving 3D Human Pose Estimation, Imitation, and Hallucination under Self-supervision},
-      author     = {Gong, Kehong and Li, Bingbing and Zhang, Jianfeng and Wang, Tao and Huang, Jing and Mi, Michael Bi and Feng, Jiashi and Wang, Xinchao},
-      booktitle  = {CVPR},
-      year       = {2022}
-    }
+```bibtex
+@inproceedings{gong2022posetriplet,
+  title      = {PoseTriplet: Co-evolving 3D Human Pose Estimation, Imitation, and Hallucination under Self-supervision},
+  author     = {Gong, Kehong and Li, Bingbing and Zhang, Jianfeng and Wang, Tao and Huang, Jing and Mi, Michael Bi and Feng, Jiashi and Wang, Xinchao},
+  booktitle  = {CVPR},
+  year       = {2022}
+}
+```
