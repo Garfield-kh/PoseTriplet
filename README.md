@@ -54,7 +54,10 @@ TBD.
 # Data Preparation
 TBD.
 
-# Train and test
+# Inference
+We provide an inference code [here](https://github.com/Garfield-kh/PoseTriplet/tree/main/estimator_inference). Please follow the instruction and download the pretrained model for inference on images/videos.
+
+# Training (training files will be released soon...)
 TBD.
 
 # Citation
