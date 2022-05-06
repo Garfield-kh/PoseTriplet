@@ -57,10 +57,14 @@ Here we compared our results with two recent works [Yu et al.](https://openacces
 # Training
 Please refer to [`script-summary`](./imitator/script-summary-gt2d-v5.sh) for the training process.
 We also provide a [checkpoint folder](https://drive.google.com/drive/folders/1iGh1Sk30Tg8-UgGXM_8KwTQSbh7jcW9Y?usp=sharing) here with better performance, 
-which support that this framework has the potential to reach the same performance as fully-supervised approaches. 
+which support that this framework has the potential to reach the same performance as fully-supervised approaches. \
+Note: checkpoint for the RL policy is not include due to the size limitation, please following the training code to train the policy.
 
 # Inference
 We provide an inference code [here](https://github.com/Garfield-kh/PoseTriplet/tree/main/estimator_inference). Please follow the instruction and download the pretrained model for inference on videos.
+
+# Talk
+Here is a [slidestalk](https://www.slidestalk.com/m/832) ([PPT](https://drive.google.com/drive/folders/1oEJfnjR1NupC4SVo7_hk2wMu5BPsRBd2?usp=sharing) in english, speak in chinese).
 
 # Citation
 If you find this code useful for your research, please consider citing the following paper:
