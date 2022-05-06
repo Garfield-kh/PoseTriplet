@@ -23,3 +23,5 @@ The code includes three parts:
 1) Estimation models are adapted from [VideoPose3D](https://github.com/facebookresearch/VideoPose3D).
 2) Augmented projection is developed from [PoseAug](https://github.com/jfzhang95/PoseAug).
 3) IK part is developed from [video2bvh](https://github.com/KevinLTT/video2bvh).
+
+If you find this part useful for your research, please consider citing them.

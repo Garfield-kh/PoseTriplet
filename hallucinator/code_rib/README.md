@@ -10,3 +10,4 @@ No extra data is required.
 
 The code is adapted from [Robust Motion In-betweening](https://arxiv.org/abs/2102.04942) with 
 [Pytorch](https://github.com/xjwxjw/Pytorch-Robust-Motion-In-betweening) code.
+If you find this part useful for your research, please consider citing them.

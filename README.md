@@ -49,19 +49,21 @@ Here we compared our results with two recent works [Yu et al.](https://openacces
 </table>
 
 # Installation
-TBD.
+* Please refer to [`README_env.md`](./README_env.md) for the python environment setup.
 
 # Data Preparation
-TBD.
+* Please refer to [`estimator/README.md`](./estimator/README.md) for the preparation of the dataset files.
+
+# Training
+Please refer to [`script-summary`](./imitator/script-summary-gt2d-v5.sh) for the training process.
+We also provide a [checkpoint folder](https://drive.google.com/drive/folders/1iGh1Sk30Tg8-UgGXM_8KwTQSbh7jcW9Y?usp=sharing) here with better performance, 
+which support that this framework has the potential to reach the same performance as fully-supervised approaches. 
 
 # Inference
 We provide an inference code [here](https://github.com/Garfield-kh/PoseTriplet/tree/main/estimator_inference). Please follow the instruction and download the pretrained model for inference on videos.
 
-# Training (training files will be released soon...)
-TBD.
-
 # Citation
-If you  find this code useful for your research, please consider citing the following paper:
+If you find this code useful for your research, please consider citing the following paper:
 
 ```bibtex
 @inproceedings{gong2022posetriplet,
