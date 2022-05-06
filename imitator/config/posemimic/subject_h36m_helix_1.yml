@@ -1,0 +1,170 @@
+# data
+meta_id: meta_subject_h36m
+cnn_feat: 'subject_h36m'
+expert_feat: 'subject_h36m'
+fr_margin: 10
+
+# state net
+state_net_cfg: 'subject_h36m'
+state_net_iter: 100
+
+# training parameters
+gamma: 0.95
+tau: 0.95
+policy_v_net: tcn
+policy_v_net_param:
+  size: [64, 128]
+  dropout: 0.2
+policy_htype: relu
+policy_hsize: [300, 200]
+policy_v_hdim: 128
+policy_optimizer: 'Adam'
+policy_lr: 5.e-5
+policy_momentum: 0.0
+policy_weightdecay: 0.0
+value_v_net: tcn
+value_v_net_param:
+  size: [64, 128]
+  dropout: 0.2
+value_htype: relu
+value_hsize: [300, 200]
+value_v_hdim: 128
+value_optimizer: 'Adam'
+value_lr: 3.e-4
+value_momentum: 0.0
+value_weightdecay: 0.0
+clip_epsilon: 0.2
+min_batch_size: 50000
+num_optim_epoch: 10
+log_std: -2.3
+fix_std: true
+fix_head_lb: 0.7
+set_fix_start_state: true
+cnn_feat_key: qpos
+max_iter_num: 6000
+seed: 1
+save_model_interval: 100
+reward_id: 'quat_v7'
+reward_weights:
+  w_p: 0.7
+  w_v: 0.3
+  w_e: 0.5
+  w_rh: 0.0
+  w_rq: 0.7
+  w_rlv: 0.5
+  w_rav: 0.5
+  w_vf: 0.3
+  w_flv: 0.3
+  w_frp: 0.0
+  k_p: 1000
+  k_v: 30
+  k_e: 2.0
+  k_rh: 20.0
+  k_rq: 100
+  k_rlv: 1
+  k_rav: 0.1
+  k_vf: 5.0
+  k_flv: 1.0
+  k_frp: 30.0
+  v_rh: 0.15
+
+# expert and environment
+mujoco_model: humanoid_h36m_v5
+vis_model: humanoid_h36m_v5_vis
+env_episode_len: 200
+obs_coord: 'heading'
+root_deheading: true
+action_type: 'position'
+
+# RFC parameters
+residual_force: True
+residual_force_scale: 100.0
+#residual_force_mode: implicit
+
+# extra control setting
+meta_control: False
+arm_reset: False
+arm_pdclip: True
+
+# masked training
+ref_reset: False
+#masked_freq: 30  # 10 for tcn, 30 for rnn
+
+jkp_multiplier: 0.5
+joint_params:
+  # ["name", "k_p", "k_d", "a_ref", "a_scale", "torque_limit"]
+  - ["Spine_x"           , 1000.0, 100.0,   0.0, 1.0, 200.0]
+  - ["Spine_y"           , 1000.0, 100.0,   0.0, 1.0, 200.0]
+  - ["Spine_z"           , 1000.0, 100.0,   0.0, 1.0, 200.0]
+  - ["Spine1_x"          , 1000.0, 100.0,   0.0, 1.0, 200.0]
+  - ["Spine1_y"          , 1000.0, 100.0,   0.0, 1.0, 200.0]
+  - ["Spine1_z"          , 1000.0, 100.0,   0.0, 1.0, 200.0]
+  - ["Spine2_x"          , 1000.0, 100.0,   0.0, 1.0, 200.0]
+  - ["Spine2_y"          , 1000.0, 100.0,   0.0, 1.0, 200.0]
+  - ["Spine2_z"          , 1000.0, 100.0,   0.0, 1.0, 200.0]
+  - ["Spine3_x"          , 1000.0, 100.0,   0.0, 1.0, 200.0]
+  - ["Spine3_y"          , 1000.0, 100.0,   0.0, 1.0, 200.0]
+  - ["Spine3_z"          , 1000.0, 100.0,   0.0, 1.0, 200.0]
+  - ["Neck_x"            ,  100.0,  10.0,   0.0, 1.0,  50.0]
+  - ["Neck_y"            ,  100.0,  10.0,   0.0, 1.0,  50.0]
+  - ["Neck_z"            ,  100.0,  10.0,   0.0, 1.0,  50.0]
+  - ["Head_x"            ,  100.0,  10.0,   0.0, 1.0,  50.0]
+  - ["Head_y"            ,  100.0,  10.0,   0.0, 1.0,  50.0]
+  - ["Head_z"            ,  100.0,  10.0,   0.0, 1.0,  50.0]
+  - ["RightShoulder_x"   ,  400.0,  40.0,   0.0, 1.0, 100.0]
+  - ["RightShoulder_y"   ,  400.0,  40.0,   0.0, 1.0, 100.0]
+  - ["RightShoulder_z"   ,  400.0,  40.0,   0.0, 1.0, 100.0]
+  - ["RightArm_x"        ,  400.0,  40.0,   0.0, 1.0, 100.0]
+  - ["RightArm_y"        ,  400.0,  40.0, -80.0, 1.0, 100.0]
+  - ["RightArm_z"        ,  400.0,  40.0,   0.0, 1.0, 100.0]
+  - ["RightForeArm_z"    ,  300.0,  30.0,  45.0, 1.0,  60.0]
+  - ["RightHand_x"       ,  100.0,  10.0,   0.0, 1.0,  50.0]
+  - ["RightHand_y"       ,  100.0,  10.0,   0.0, 1.0,  50.0]
+  - ["RightHand_z"       ,  100.0,  10.0,   0.0, 1.0,  50.0]
+  - ["LeftShoulder_x"    ,  400.0,  40.0,   0.0, 1.0, 100.0]
+  - ["LeftShoulder_y"    ,  400.0,  40.0,   0.0, 1.0, 100.0]
+  - ["LeftShoulder_z"    ,  400.0,  40.0,   0.0, 1.0, 100.0]
+  - ["LeftArm_x"         ,  400.0,  40.0,   0.0, 1.0, 100.0]
+  - ["LeftArm_y"         ,  400.0,  40.0,  80.0, 1.0, 100.0]
+  - ["LeftArm_z"         ,  400.0,  40.0,   0.0, 1.0, 100.0]
+  - ["LeftForeArm_z"     ,  300.0,  30.0, -45.0, 1.0,  60.0]
+  - ["LeftHand_x"        ,  100.0,  10.0,   0.0, 1.0,  50.0]
+  - ["LeftHand_y"        ,  100.0,  10.0,   0.0, 1.0,  50.0]
+  - ["LeftHand_z"        ,  100.0,  10.0,   0.0, 1.0,  50.0]
+  - ["RightUpLeg_x"      ,  500.0,  50.0,   0.0, 1.0, 600.0]
+  - ["RightUpLeg_y"      ,  500.0,  50.0,   0.0, 1.0, 600.0]
+  - ["RightUpLeg_z"      ,  500.0,  50.0,   0.0, 1.0, 600.0]
+  - ["RightLeg_x"        ,  500.0,  50.0,  45.0, 1.0, 450.0]
+  - ["RightFoot_x"       ,  400.0,  40.0,   0.0, 1.0, 300.0]
+  - ["RightFoot_y"       ,  400.0,  40.0,   0.0, 1.0, 300.0]
+  - ["RightFoot_z"       ,  400.0,  40.0,   0.0, 1.0, 300.0]
+  - ["LeftUpLeg_x"       ,  500.0,  50.0,   0.0, 1.0, 600.0]
+  - ["LeftUpLeg_y"       ,  500.0,  50.0,   0.0, 1.0, 600.0]
+  - ["LeftUpLeg_z"       ,  500.0,  50.0,   0.0, 1.0, 600.0]
+  - ["LeftLeg_x"         ,  500.0,  50.0,  45.0, 1.0, 450.0]
+  - ["LeftFoot_x"        ,  400.0,  40.0,   0.0, 1.0, 300.0]
+  - ["LeftFoot_y"        ,  400.0,  40.0,   0.0, 1.0, 300.0]
+  - ["LeftFoot_z"        ,  400.0,  40.0,   0.0, 1.0, 300.0]
+
+body_params:
+  # ["name","diff weight"]
+  - ["Spine"         , 1.0]
+  - ["Spine1"        , 1.0]
+  - ["Spine2"        , 1.0]
+  - ["Spine3"        , 1.0]
+  - ["Neck"          , 1.0]
+  - ["Head"          , 1.0]
+  - ["RightShoulder" , 5.0]
+  - ["RightArm"      , 5.0]
+  - ["RightForeArm"  , 5.0]
+  - ["RightHand"     , 0.0]
+  - ["LeftShoulder"  , 5.0]
+  - ["LeftArm"       , 5.0]
+  - ["LeftForeArm"   , 5.0]
+  - ["LeftHand"      , 0.0]
+  - ["RightUpLeg"    , 5.0]
+  - ["RightLeg"      , 5.0]
+  - ["RightFoot"     , 0.0]
+  - ["LeftUpLeg"     , 5.0]
+  - ["LeftLeg"       , 5.0]
+  - ["LeftFoot"      , 0.0]

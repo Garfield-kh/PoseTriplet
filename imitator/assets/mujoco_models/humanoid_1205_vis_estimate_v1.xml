@@ -1,0 +1,1562 @@
+<mujoco model="humanoid">
+  <compiler angle="degree" inertiafromgeom="true" coordinate="global"/>
+  <include file="./common/materials.xml"/>
+  <visual>
+    <headlight ambient=".4 .4 .4" diffuse=".8 .8 .8" specular="0.1 0.1 0.1"/>
+    <map znear=".01"/>
+    <quality shadowsize="2048"/>
+  </visual>
+  <default>
+    <joint damping="0.0" armature="0.01" stiffness="0.0" limited="true"/>
+    <geom conaffinity="7" condim="1" contype="7" margin="0.001" material="self" rgba="0.8 0.6 .4 1"/>
+    <default class="trans">
+      <geom rgba="0.8 0.6 .4 0.3"/>
+    </default>
+  </default>
+  <statistic extent="3" center="0 0 1"/>
+  <option timestep="0.00222222222">
+    <flag contact="disable"/>
+  </option>
+  <asset>
+    <texture type="skybox" file="./common/sky1.png" gridsize="3 4" gridlayout=".U..LFRB.D.." width="8192" height="8192"/>
+    <texture builtin="flat" height="1278" mark="cross" markrgb="1 1 1" name="texgeom" random="0.01" rgb1=".8 .6 .4" rgb2=".8 .6 .4" type="cube" width="127"/>
+  </asset>
+  <worldbody>
+    <light cutoff="100" diffuse="1 1 1" dir="-0 0 -1.3" directional="true" exponent="1" pos="0 0 1.3" specular=".1 .1 .1"/>
+    <geom condim="3" friction="1. .1 .1" material="grid" name="floor" pos="0 0 0" rgba=".8 .9 .8 1" size="100 100 .2" type="plane"/>
+    <body name="Hips" user="0.0000 0.0146 0.0054" pos="0.0000 0.0146 0.0054">
+      <geom fromto="-0.0750 0.0506 0.0054 0.0750 0.0506 0.0054" size="0.0820" type="capsule"/>
+      <joint armature="0" damping="0" limited="false" name="Hips" pos="0.0000 0.0000 0.0000" stiffness="0" type="free"/>
+      <body name="Spine" user="0.0000 0.0591 0.1523" pos="0.0000 0.0146 0.0054">
+        <geom fromto="-0.0550 0.0369 0.1109 0.0550 0.0369 0.1109" size="0.0590" type="capsule"/>
+        <joint axis="1.0000 0.0000 0.0000" name="Spine_x" pos="0.0000 0.0439 0.0658" range="-30.0000 45.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="Spine_y" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="Spine_z" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <body name="Spine1" user="0.0000 0.0668 0.2397" pos="0.0000 0.0591 0.1523">
+          <geom fromto="-0.0600 0.0370 0.1960 0.0600 0.0370 0.1960" size="0.0540" type="capsule"/>
+          <joint axis="1.0000 0.0000 0.0000" name="Spine1_x" pos="0.0000 0.0591 0.1523" range="-30.0000 45.0000" type="hinge"/>
+          <joint axis="0.0000 1.0000 0.0000" name="Spine1_y" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <joint axis="0.0000 0.0000 1.0000" name="Spine1_z" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <body name="Spine2" user="0.0000 0.0668 0.3275" pos="0.0000 0.0668 0.2397">
+            <geom fromto="-0.0575 0.0308 0.2896 0.0575 0.0308 0.2896" size="0.0570" type="capsule"/>
+            <joint axis="1.0000 0.0000 0.0000" name="Spine2_x" pos="0.0000 0.0668 0.2397" range="-30.0000 45.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="Spine2_y" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="Spine2_z" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <body name="Spine3" user="0.0000 0.0240 0.5074" pos="0.0000 0.0668 0.3275">
+              <geom fromto="-0.0550 0.0274 0.3914 0.0550 0.0274 0.3914" size="0.0620" type="capsule"/>
+              <joint axis="1.0000 0.0000 0.0000" name="Spine3_x" pos="0.0000 0.0668 0.3275" range="-30.0000 45.0000" type="hinge"/>
+              <joint axis="0.0000 1.0000 0.0000" name="Spine3_y" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <joint axis="0.0000 0.0000 1.0000" name="Spine3_z" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <body name="Neck" user="0.0000 0.0129 0.6768" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="Neck_x" pos="0.0000 0.0339 0.5579" range="-30.0000 45.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="Neck_y" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="Neck_z" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <geom fromto="0.0000 0.0304 0.5336 0.0000 0.0164 0.6131" size="0.0370" type="capsule"/>
+                <body name="Head" user="0.0000 0.0129 0.8188" pos="0.0000 0.0129 0.6768">
+                  <geom pos="0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom pos="-0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom fromto="0.0000 0.0129 0.6543 0.0000 0.0129 0.7013" size="0.0680" type="capsule"/>
+                  <joint axis="1.0000 0.0000 0.0000" name="Head_x" pos="0.0000 0.0129 0.6768" range="-30.0000 45.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="Head_y" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="Head_z" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                </body>
+              </body>
+              <body name="RightShoulder" user="-0.1708 0.0191 0.4821" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="RightShoulder_x" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="RightShoulder_y" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="RightShoulder_z" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="-0.0406 0.0191 0.4821 -0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="RightArm" user="-0.4103 0.0191 0.4821" pos="-0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="RightArm_x" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="RightArm_y" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="RightArm_z" pos="-0.1708 0.0191 0.4821" range="-60.0000 90.0000" type="hinge"/>
+                  <geom fromto="-0.1558 0.0191 0.4821 -0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="RightForeArm" user="-0.6643 0.0191 0.4821" pos="-0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="RightForeArm_z" pos="-0.4103 0.0191 0.4821" range="-10.0000 170.0000" type="hinge"/>
+                    <geom fromto="-0.4303 0.0191 0.4821 -0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="RightHand" user="-0.7282 0.0191 0.4821" pos="-0.6643 0.0191 0.4821">
+                      <geom pos="-0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="RightHand_x" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="RightHand_y" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="RightHand_z" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+              <body name="LeftShoulder" user="0.1708 0.0191 0.4821" pos="-0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="LeftShoulder_x" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="LeftShoulder_y" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="LeftShoulder_z" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="0.0406 0.0191 0.4821 0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="LeftArm" user="0.4103 0.0191 0.4821" pos="0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="LeftArm_x" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="LeftArm_y" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="LeftArm_z" pos="0.1708 0.0191 0.4821" range="-90.0000 60.0000" type="hinge"/>
+                  <geom fromto="0.1558 0.0191 0.4821 0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="LeftForeArm" user="0.6643 0.0191 0.4821" pos="0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="LeftForeArm_z" pos="0.4103 0.0191 0.4821" range="-170.0000 10.0000" type="hinge"/>
+                    <geom fromto="0.4303 0.0191 0.4821 0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="LeftHand" user="0.7282 0.0191 0.4821" pos="0.6643 0.0191 0.4821">
+                      <geom pos="0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="LeftHand_x" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="LeftHand_y" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="LeftHand_z" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="RightUpLeg" user="-0.0849 0.0000 -0.4027" pos="0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="RightUpLeg_x" pos="-0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="RightUpLeg_y" pos="-0.0849 0.0000 -0.0248" range="-40.0000 90.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="RightUpLeg_z" pos="-0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="-0.0849 0.0000 -0.0448 -0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="RightLeg" user="-0.0849 0.0000 -0.7988" pos="-0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="RightLeg_x" pos="-0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="1" conaffinity="1" fromto="-0.0849 0.0000 -0.4227 -0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="RightFoot" user="-0.0849 -0.1308 -0.8464" pos="-0.0849 0.0000 -0.7988">
+            <geom contype="1" conaffinity="1" pos="-0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 -0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="RightFoot_x" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="RightFoot_y" pos="-0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="RightFoot_z" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+      <body name="LeftUpLeg" user="0.0849 0.0000 -0.4027" pos="-0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="LeftUpLeg_x" pos="0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="LeftUpLeg_y" pos="0.0849 0.0000 -0.0248" range="-90.0000 40.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="LeftUpLeg_z" pos="0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="0.0849 0.0000 -0.0448 0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="LeftLeg" user="0.0849 0.0000 -0.7988" pos="0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="LeftLeg_x" pos="0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="2" conaffinity="2" fromto="0.0849 0.0000 -0.4227 0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="LeftFoot" user="0.0849 -0.1308 -0.8464" pos="0.0849 0.0000 -0.7988">
+            <geom contype="2" conaffinity="2" pos="0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="LeftFoot_x" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="LeftFoot_y" pos="0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="LeftFoot_z" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="1_Hips" user="0.0000 0.0146 0.0054" pos="0.0000 0.0146 0.0054">
+      <geom fromto="-0.0750 0.0506 0.0054 0.0750 0.0506 0.0054" size="0.0820" type="capsule"/>
+      <joint armature="0" damping="0" limited="false" name="1_Hips" pos="0.0000 0.0000 0.0000" stiffness="0" type="free"/>
+      <body name="1_Spine" user="0.0000 0.0591 0.1523" pos="0.0000 0.0146 0.0054">
+        <geom fromto="-0.0550 0.0369 0.1109 0.0550 0.0369 0.1109" size="0.0590" type="capsule"/>
+        <joint axis="1.0000 0.0000 0.0000" name="1_Spine_x" pos="0.0000 0.0439 0.0658" range="-30.0000 45.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="1_Spine_y" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="1_Spine_z" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <body name="1_Spine1" user="0.0000 0.0668 0.2397" pos="0.0000 0.0591 0.1523">
+          <geom fromto="-0.0600 0.0370 0.1960 0.0600 0.0370 0.1960" size="0.0540" type="capsule"/>
+          <joint axis="1.0000 0.0000 0.0000" name="1_Spine1_x" pos="0.0000 0.0591 0.1523" range="-30.0000 45.0000" type="hinge"/>
+          <joint axis="0.0000 1.0000 0.0000" name="1_Spine1_y" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <joint axis="0.0000 0.0000 1.0000" name="1_Spine1_z" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <body name="1_Spine2" user="0.0000 0.0668 0.3275" pos="0.0000 0.0668 0.2397">
+            <geom fromto="-0.0575 0.0308 0.2896 0.0575 0.0308 0.2896" size="0.0570" type="capsule"/>
+            <joint axis="1.0000 0.0000 0.0000" name="1_Spine2_x" pos="0.0000 0.0668 0.2397" range="-30.0000 45.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="1_Spine2_y" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="1_Spine2_z" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <body name="1_Spine3" user="0.0000 0.0240 0.5074" pos="0.0000 0.0668 0.3275">
+              <geom fromto="-0.0550 0.0274 0.3914 0.0550 0.0274 0.3914" size="0.0620" type="capsule"/>
+              <joint axis="1.0000 0.0000 0.0000" name="1_Spine3_x" pos="0.0000 0.0668 0.3275" range="-30.0000 45.0000" type="hinge"/>
+              <joint axis="0.0000 1.0000 0.0000" name="1_Spine3_y" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <joint axis="0.0000 0.0000 1.0000" name="1_Spine3_z" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <body name="1_Neck" user="0.0000 0.0129 0.6768" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="1_Neck_x" pos="0.0000 0.0339 0.5579" range="-30.0000 45.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="1_Neck_y" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="1_Neck_z" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <geom fromto="0.0000 0.0304 0.5336 0.0000 0.0164 0.6131" size="0.0370" type="capsule"/>
+                <body name="1_Head" user="0.0000 0.0129 0.8188" pos="0.0000 0.0129 0.6768">
+                  <geom pos="0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom pos="-0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom fromto="0.0000 0.0129 0.6543 0.0000 0.0129 0.7013" size="0.0680" type="capsule"/>
+                  <joint axis="1.0000 0.0000 0.0000" name="1_Head_x" pos="0.0000 0.0129 0.6768" range="-30.0000 45.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="1_Head_y" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="1_Head_z" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                </body>
+              </body>
+              <body name="1_RightShoulder" user="-0.1708 0.0191 0.4821" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="1_RightShoulder_x" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="1_RightShoulder_y" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="1_RightShoulder_z" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="-0.0406 0.0191 0.4821 -0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="1_RightArm" user="-0.4103 0.0191 0.4821" pos="-0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="1_RightArm_x" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="1_RightArm_y" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="1_RightArm_z" pos="-0.1708 0.0191 0.4821" range="-60.0000 90.0000" type="hinge"/>
+                  <geom fromto="-0.1558 0.0191 0.4821 -0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="1_RightForeArm" user="-0.6643 0.0191 0.4821" pos="-0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="1_RightForeArm_z" pos="-0.4103 0.0191 0.4821" range="-10.0000 170.0000" type="hinge"/>
+                    <geom fromto="-0.4303 0.0191 0.4821 -0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="1_RightHand" user="-0.7282 0.0191 0.4821" pos="-0.6643 0.0191 0.4821">
+                      <geom pos="-0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="1_RightHand_x" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="1_RightHand_y" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="1_RightHand_z" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+              <body name="1_LeftShoulder" user="0.1708 0.0191 0.4821" pos="-0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="1_LeftShoulder_x" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="1_LeftShoulder_y" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="1_LeftShoulder_z" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="0.0406 0.0191 0.4821 0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="1_LeftArm" user="0.4103 0.0191 0.4821" pos="0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="1_LeftArm_x" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="1_LeftArm_y" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="1_LeftArm_z" pos="0.1708 0.0191 0.4821" range="-90.0000 60.0000" type="hinge"/>
+                  <geom fromto="0.1558 0.0191 0.4821 0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="1_LeftForeArm" user="0.6643 0.0191 0.4821" pos="0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="1_LeftForeArm_z" pos="0.4103 0.0191 0.4821" range="-170.0000 10.0000" type="hinge"/>
+                    <geom fromto="0.4303 0.0191 0.4821 0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="1_LeftHand" user="0.7282 0.0191 0.4821" pos="0.6643 0.0191 0.4821">
+                      <geom pos="0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="1_LeftHand_x" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="1_LeftHand_y" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="1_LeftHand_z" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="1_RightUpLeg" user="-0.0849 0.0000 -0.4027" pos="0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="1_RightUpLeg_x" pos="-0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="1_RightUpLeg_y" pos="-0.0849 0.0000 -0.0248" range="-40.0000 90.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="1_RightUpLeg_z" pos="-0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="-0.0849 0.0000 -0.0448 -0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="1_RightLeg" user="-0.0849 0.0000 -0.7988" pos="-0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="1_RightLeg_x" pos="-0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="1" conaffinity="1" fromto="-0.0849 0.0000 -0.4227 -0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="1_RightFoot" user="-0.0849 -0.1308 -0.8464" pos="-0.0849 0.0000 -0.7988">
+            <geom contype="1" conaffinity="1" pos="-0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 -0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="1_RightFoot_x" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="1_RightFoot_y" pos="-0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="1_RightFoot_z" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+      <body name="1_LeftUpLeg" user="0.0849 0.0000 -0.4027" pos="-0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="1_LeftUpLeg_x" pos="0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="1_LeftUpLeg_y" pos="0.0849 0.0000 -0.0248" range="-90.0000 40.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="1_LeftUpLeg_z" pos="0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="0.0849 0.0000 -0.0448 0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="1_LeftLeg" user="0.0849 0.0000 -0.7988" pos="0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="1_LeftLeg_x" pos="0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="2" conaffinity="2" fromto="0.0849 0.0000 -0.4227 0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="1_LeftFoot" user="0.0849 -0.1308 -0.8464" pos="0.0849 0.0000 -0.7988">
+            <geom contype="2" conaffinity="2" pos="0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="1_LeftFoot_x" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="1_LeftFoot_y" pos="0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="1_LeftFoot_z" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="2_Hips" user="0.0000 0.0146 0.0054" pos="0.0000 0.0146 0.0054">
+      <geom fromto="-0.0750 0.0506 0.0054 0.0750 0.0506 0.0054" size="0.0820" type="capsule"/>
+      <joint armature="0" damping="0" limited="false" name="2_Hips" pos="0.0000 0.0000 0.0000" stiffness="0" type="free"/>
+      <body name="2_Spine" user="0.0000 0.0591 0.1523" pos="0.0000 0.0146 0.0054">
+        <geom fromto="-0.0550 0.0369 0.1109 0.0550 0.0369 0.1109" size="0.0590" type="capsule"/>
+        <joint axis="1.0000 0.0000 0.0000" name="2_Spine_x" pos="0.0000 0.0439 0.0658" range="-30.0000 45.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="2_Spine_y" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="2_Spine_z" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <body name="2_Spine1" user="0.0000 0.0668 0.2397" pos="0.0000 0.0591 0.1523">
+          <geom fromto="-0.0600 0.0370 0.1960 0.0600 0.0370 0.1960" size="0.0540" type="capsule"/>
+          <joint axis="1.0000 0.0000 0.0000" name="2_Spine1_x" pos="0.0000 0.0591 0.1523" range="-30.0000 45.0000" type="hinge"/>
+          <joint axis="0.0000 1.0000 0.0000" name="2_Spine1_y" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <joint axis="0.0000 0.0000 1.0000" name="2_Spine1_z" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <body name="2_Spine2" user="0.0000 0.0668 0.3275" pos="0.0000 0.0668 0.2397">
+            <geom fromto="-0.0575 0.0308 0.2896 0.0575 0.0308 0.2896" size="0.0570" type="capsule"/>
+            <joint axis="1.0000 0.0000 0.0000" name="2_Spine2_x" pos="0.0000 0.0668 0.2397" range="-30.0000 45.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="2_Spine2_y" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="2_Spine2_z" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <body name="2_Spine3" user="0.0000 0.0240 0.5074" pos="0.0000 0.0668 0.3275">
+              <geom fromto="-0.0550 0.0274 0.3914 0.0550 0.0274 0.3914" size="0.0620" type="capsule"/>
+              <joint axis="1.0000 0.0000 0.0000" name="2_Spine3_x" pos="0.0000 0.0668 0.3275" range="-30.0000 45.0000" type="hinge"/>
+              <joint axis="0.0000 1.0000 0.0000" name="2_Spine3_y" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <joint axis="0.0000 0.0000 1.0000" name="2_Spine3_z" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <body name="2_Neck" user="0.0000 0.0129 0.6768" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="2_Neck_x" pos="0.0000 0.0339 0.5579" range="-30.0000 45.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="2_Neck_y" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="2_Neck_z" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <geom fromto="0.0000 0.0304 0.5336 0.0000 0.0164 0.6131" size="0.0370" type="capsule"/>
+                <body name="2_Head" user="0.0000 0.0129 0.8188" pos="0.0000 0.0129 0.6768">
+                  <geom pos="0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom pos="-0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom fromto="0.0000 0.0129 0.6543 0.0000 0.0129 0.7013" size="0.0680" type="capsule"/>
+                  <joint axis="1.0000 0.0000 0.0000" name="2_Head_x" pos="0.0000 0.0129 0.6768" range="-30.0000 45.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="2_Head_y" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="2_Head_z" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                </body>
+              </body>
+              <body name="2_RightShoulder" user="-0.1708 0.0191 0.4821" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="2_RightShoulder_x" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="2_RightShoulder_y" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="2_RightShoulder_z" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="-0.0406 0.0191 0.4821 -0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="2_RightArm" user="-0.4103 0.0191 0.4821" pos="-0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="2_RightArm_x" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="2_RightArm_y" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="2_RightArm_z" pos="-0.1708 0.0191 0.4821" range="-60.0000 90.0000" type="hinge"/>
+                  <geom fromto="-0.1558 0.0191 0.4821 -0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="2_RightForeArm" user="-0.6643 0.0191 0.4821" pos="-0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="2_RightForeArm_z" pos="-0.4103 0.0191 0.4821" range="-10.0000 170.0000" type="hinge"/>
+                    <geom fromto="-0.4303 0.0191 0.4821 -0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="2_RightHand" user="-0.7282 0.0191 0.4821" pos="-0.6643 0.0191 0.4821">
+                      <geom pos="-0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="2_RightHand_x" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="2_RightHand_y" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="2_RightHand_z" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+              <body name="2_LeftShoulder" user="0.1708 0.0191 0.4821" pos="-0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="2_LeftShoulder_x" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="2_LeftShoulder_y" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="2_LeftShoulder_z" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="0.0406 0.0191 0.4821 0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="2_LeftArm" user="0.4103 0.0191 0.4821" pos="0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="2_LeftArm_x" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="2_LeftArm_y" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="2_LeftArm_z" pos="0.1708 0.0191 0.4821" range="-90.0000 60.0000" type="hinge"/>
+                  <geom fromto="0.1558 0.0191 0.4821 0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="2_LeftForeArm" user="0.6643 0.0191 0.4821" pos="0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="2_LeftForeArm_z" pos="0.4103 0.0191 0.4821" range="-170.0000 10.0000" type="hinge"/>
+                    <geom fromto="0.4303 0.0191 0.4821 0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="2_LeftHand" user="0.7282 0.0191 0.4821" pos="0.6643 0.0191 0.4821">
+                      <geom pos="0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="2_LeftHand_x" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="2_LeftHand_y" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="2_LeftHand_z" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="2_RightUpLeg" user="-0.0849 0.0000 -0.4027" pos="0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="2_RightUpLeg_x" pos="-0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="2_RightUpLeg_y" pos="-0.0849 0.0000 -0.0248" range="-40.0000 90.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="2_RightUpLeg_z" pos="-0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="-0.0849 0.0000 -0.0448 -0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="2_RightLeg" user="-0.0849 0.0000 -0.7988" pos="-0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="2_RightLeg_x" pos="-0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="1" conaffinity="1" fromto="-0.0849 0.0000 -0.4227 -0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="2_RightFoot" user="-0.0849 -0.1308 -0.8464" pos="-0.0849 0.0000 -0.7988">
+            <geom contype="1" conaffinity="1" pos="-0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 -0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="2_RightFoot_x" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="2_RightFoot_y" pos="-0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="2_RightFoot_z" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+      <body name="2_LeftUpLeg" user="0.0849 0.0000 -0.4027" pos="-0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="2_LeftUpLeg_x" pos="0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="2_LeftUpLeg_y" pos="0.0849 0.0000 -0.0248" range="-90.0000 40.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="2_LeftUpLeg_z" pos="0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="0.0849 0.0000 -0.0448 0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="2_LeftLeg" user="0.0849 0.0000 -0.7988" pos="0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="2_LeftLeg_x" pos="0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="2" conaffinity="2" fromto="0.0849 0.0000 -0.4227 0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="2_LeftFoot" user="0.0849 -0.1308 -0.8464" pos="0.0849 0.0000 -0.7988">
+            <geom contype="2" conaffinity="2" pos="0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="2_LeftFoot_x" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="2_LeftFoot_y" pos="0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="2_LeftFoot_z" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="3_Hips" user="0.0000 0.0146 0.0054" pos="0.0000 0.0146 0.0054">
+      <geom fromto="-0.0750 0.0506 0.0054 0.0750 0.0506 0.0054" size="0.0820" type="capsule"/>
+      <joint armature="0" damping="0" limited="false" name="3_Hips" pos="0.0000 0.0000 0.0000" stiffness="0" type="free"/>
+      <body name="3_Spine" user="0.0000 0.0591 0.1523" pos="0.0000 0.0146 0.0054">
+        <geom fromto="-0.0550 0.0369 0.1109 0.0550 0.0369 0.1109" size="0.0590" type="capsule"/>
+        <joint axis="1.0000 0.0000 0.0000" name="3_Spine_x" pos="0.0000 0.0439 0.0658" range="-30.0000 45.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="3_Spine_y" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="3_Spine_z" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <body name="3_Spine1" user="0.0000 0.0668 0.2397" pos="0.0000 0.0591 0.1523">
+          <geom fromto="-0.0600 0.0370 0.1960 0.0600 0.0370 0.1960" size="0.0540" type="capsule"/>
+          <joint axis="1.0000 0.0000 0.0000" name="3_Spine1_x" pos="0.0000 0.0591 0.1523" range="-30.0000 45.0000" type="hinge"/>
+          <joint axis="0.0000 1.0000 0.0000" name="3_Spine1_y" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <joint axis="0.0000 0.0000 1.0000" name="3_Spine1_z" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <body name="3_Spine2" user="0.0000 0.0668 0.3275" pos="0.0000 0.0668 0.2397">
+            <geom fromto="-0.0575 0.0308 0.2896 0.0575 0.0308 0.2896" size="0.0570" type="capsule"/>
+            <joint axis="1.0000 0.0000 0.0000" name="3_Spine2_x" pos="0.0000 0.0668 0.2397" range="-30.0000 45.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="3_Spine2_y" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="3_Spine2_z" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <body name="3_Spine3" user="0.0000 0.0240 0.5074" pos="0.0000 0.0668 0.3275">
+              <geom fromto="-0.0550 0.0274 0.3914 0.0550 0.0274 0.3914" size="0.0620" type="capsule"/>
+              <joint axis="1.0000 0.0000 0.0000" name="3_Spine3_x" pos="0.0000 0.0668 0.3275" range="-30.0000 45.0000" type="hinge"/>
+              <joint axis="0.0000 1.0000 0.0000" name="3_Spine3_y" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <joint axis="0.0000 0.0000 1.0000" name="3_Spine3_z" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <body name="3_Neck" user="0.0000 0.0129 0.6768" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="3_Neck_x" pos="0.0000 0.0339 0.5579" range="-30.0000 45.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="3_Neck_y" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="3_Neck_z" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <geom fromto="0.0000 0.0304 0.5336 0.0000 0.0164 0.6131" size="0.0370" type="capsule"/>
+                <body name="3_Head" user="0.0000 0.0129 0.8188" pos="0.0000 0.0129 0.6768">
+                  <geom pos="0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom pos="-0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom fromto="0.0000 0.0129 0.6543 0.0000 0.0129 0.7013" size="0.0680" type="capsule"/>
+                  <joint axis="1.0000 0.0000 0.0000" name="3_Head_x" pos="0.0000 0.0129 0.6768" range="-30.0000 45.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="3_Head_y" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="3_Head_z" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                </body>
+              </body>
+              <body name="3_RightShoulder" user="-0.1708 0.0191 0.4821" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="3_RightShoulder_x" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="3_RightShoulder_y" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="3_RightShoulder_z" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="-0.0406 0.0191 0.4821 -0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="3_RightArm" user="-0.4103 0.0191 0.4821" pos="-0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="3_RightArm_x" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="3_RightArm_y" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="3_RightArm_z" pos="-0.1708 0.0191 0.4821" range="-60.0000 90.0000" type="hinge"/>
+                  <geom fromto="-0.1558 0.0191 0.4821 -0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="3_RightForeArm" user="-0.6643 0.0191 0.4821" pos="-0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="3_RightForeArm_z" pos="-0.4103 0.0191 0.4821" range="-10.0000 170.0000" type="hinge"/>
+                    <geom fromto="-0.4303 0.0191 0.4821 -0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="3_RightHand" user="-0.7282 0.0191 0.4821" pos="-0.6643 0.0191 0.4821">
+                      <geom pos="-0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="3_RightHand_x" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="3_RightHand_y" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="3_RightHand_z" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+              <body name="3_LeftShoulder" user="0.1708 0.0191 0.4821" pos="-0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="3_LeftShoulder_x" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="3_LeftShoulder_y" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="3_LeftShoulder_z" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="0.0406 0.0191 0.4821 0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="3_LeftArm" user="0.4103 0.0191 0.4821" pos="0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="3_LeftArm_x" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="3_LeftArm_y" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="3_LeftArm_z" pos="0.1708 0.0191 0.4821" range="-90.0000 60.0000" type="hinge"/>
+                  <geom fromto="0.1558 0.0191 0.4821 0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="3_LeftForeArm" user="0.6643 0.0191 0.4821" pos="0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="3_LeftForeArm_z" pos="0.4103 0.0191 0.4821" range="-170.0000 10.0000" type="hinge"/>
+                    <geom fromto="0.4303 0.0191 0.4821 0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="3_LeftHand" user="0.7282 0.0191 0.4821" pos="0.6643 0.0191 0.4821">
+                      <geom pos="0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="3_LeftHand_x" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="3_LeftHand_y" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="3_LeftHand_z" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="3_RightUpLeg" user="-0.0849 0.0000 -0.4027" pos="0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="3_RightUpLeg_x" pos="-0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="3_RightUpLeg_y" pos="-0.0849 0.0000 -0.0248" range="-40.0000 90.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="3_RightUpLeg_z" pos="-0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="-0.0849 0.0000 -0.0448 -0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="3_RightLeg" user="-0.0849 0.0000 -0.7988" pos="-0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="3_RightLeg_x" pos="-0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="1" conaffinity="1" fromto="-0.0849 0.0000 -0.4227 -0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="3_RightFoot" user="-0.0849 -0.1308 -0.8464" pos="-0.0849 0.0000 -0.7988">
+            <geom contype="1" conaffinity="1" pos="-0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 -0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="3_RightFoot_x" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="3_RightFoot_y" pos="-0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="3_RightFoot_z" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+      <body name="3_LeftUpLeg" user="0.0849 0.0000 -0.4027" pos="-0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="3_LeftUpLeg_x" pos="0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="3_LeftUpLeg_y" pos="0.0849 0.0000 -0.0248" range="-90.0000 40.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="3_LeftUpLeg_z" pos="0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="0.0849 0.0000 -0.0448 0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="3_LeftLeg" user="0.0849 0.0000 -0.7988" pos="0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="3_LeftLeg_x" pos="0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="2" conaffinity="2" fromto="0.0849 0.0000 -0.4227 0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="3_LeftFoot" user="0.0849 -0.1308 -0.8464" pos="0.0849 0.0000 -0.7988">
+            <geom contype="2" conaffinity="2" pos="0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="3_LeftFoot_x" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="3_LeftFoot_y" pos="0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="3_LeftFoot_z" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="4_Hips" user="0.0000 0.0146 0.0054" pos="0.0000 0.0146 0.0054">
+      <geom fromto="-0.0750 0.0506 0.0054 0.0750 0.0506 0.0054" size="0.0820" type="capsule"/>
+      <joint armature="0" damping="0" limited="false" name="4_Hips" pos="0.0000 0.0000 0.0000" stiffness="0" type="free"/>
+      <body name="4_Spine" user="0.0000 0.0591 0.1523" pos="0.0000 0.0146 0.0054">
+        <geom fromto="-0.0550 0.0369 0.1109 0.0550 0.0369 0.1109" size="0.0590" type="capsule"/>
+        <joint axis="1.0000 0.0000 0.0000" name="4_Spine_x" pos="0.0000 0.0439 0.0658" range="-30.0000 45.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="4_Spine_y" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="4_Spine_z" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <body name="4_Spine1" user="0.0000 0.0668 0.2397" pos="0.0000 0.0591 0.1523">
+          <geom fromto="-0.0600 0.0370 0.1960 0.0600 0.0370 0.1960" size="0.0540" type="capsule"/>
+          <joint axis="1.0000 0.0000 0.0000" name="4_Spine1_x" pos="0.0000 0.0591 0.1523" range="-30.0000 45.0000" type="hinge"/>
+          <joint axis="0.0000 1.0000 0.0000" name="4_Spine1_y" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <joint axis="0.0000 0.0000 1.0000" name="4_Spine1_z" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <body name="4_Spine2" user="0.0000 0.0668 0.3275" pos="0.0000 0.0668 0.2397">
+            <geom fromto="-0.0575 0.0308 0.2896 0.0575 0.0308 0.2896" size="0.0570" type="capsule"/>
+            <joint axis="1.0000 0.0000 0.0000" name="4_Spine2_x" pos="0.0000 0.0668 0.2397" range="-30.0000 45.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="4_Spine2_y" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="4_Spine2_z" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <body name="4_Spine3" user="0.0000 0.0240 0.5074" pos="0.0000 0.0668 0.3275">
+              <geom fromto="-0.0550 0.0274 0.3914 0.0550 0.0274 0.3914" size="0.0620" type="capsule"/>
+              <joint axis="1.0000 0.0000 0.0000" name="4_Spine3_x" pos="0.0000 0.0668 0.3275" range="-30.0000 45.0000" type="hinge"/>
+              <joint axis="0.0000 1.0000 0.0000" name="4_Spine3_y" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <joint axis="0.0000 0.0000 1.0000" name="4_Spine3_z" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <body name="4_Neck" user="0.0000 0.0129 0.6768" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="4_Neck_x" pos="0.0000 0.0339 0.5579" range="-30.0000 45.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="4_Neck_y" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="4_Neck_z" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <geom fromto="0.0000 0.0304 0.5336 0.0000 0.0164 0.6131" size="0.0370" type="capsule"/>
+                <body name="4_Head" user="0.0000 0.0129 0.8188" pos="0.0000 0.0129 0.6768">
+                  <geom pos="0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom pos="-0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom fromto="0.0000 0.0129 0.6543 0.0000 0.0129 0.7013" size="0.0680" type="capsule"/>
+                  <joint axis="1.0000 0.0000 0.0000" name="4_Head_x" pos="0.0000 0.0129 0.6768" range="-30.0000 45.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="4_Head_y" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="4_Head_z" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                </body>
+              </body>
+              <body name="4_RightShoulder" user="-0.1708 0.0191 0.4821" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="4_RightShoulder_x" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="4_RightShoulder_y" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="4_RightShoulder_z" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="-0.0406 0.0191 0.4821 -0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="4_RightArm" user="-0.4103 0.0191 0.4821" pos="-0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="4_RightArm_x" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="4_RightArm_y" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="4_RightArm_z" pos="-0.1708 0.0191 0.4821" range="-60.0000 90.0000" type="hinge"/>
+                  <geom fromto="-0.1558 0.0191 0.4821 -0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="4_RightForeArm" user="-0.6643 0.0191 0.4821" pos="-0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="4_RightForeArm_z" pos="-0.4103 0.0191 0.4821" range="-10.0000 170.0000" type="hinge"/>
+                    <geom fromto="-0.4303 0.0191 0.4821 -0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="4_RightHand" user="-0.7282 0.0191 0.4821" pos="-0.6643 0.0191 0.4821">
+                      <geom pos="-0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="4_RightHand_x" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="4_RightHand_y" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="4_RightHand_z" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+              <body name="4_LeftShoulder" user="0.1708 0.0191 0.4821" pos="-0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="4_LeftShoulder_x" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="4_LeftShoulder_y" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="4_LeftShoulder_z" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="0.0406 0.0191 0.4821 0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="4_LeftArm" user="0.4103 0.0191 0.4821" pos="0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="4_LeftArm_x" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="4_LeftArm_y" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="4_LeftArm_z" pos="0.1708 0.0191 0.4821" range="-90.0000 60.0000" type="hinge"/>
+                  <geom fromto="0.1558 0.0191 0.4821 0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="4_LeftForeArm" user="0.6643 0.0191 0.4821" pos="0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="4_LeftForeArm_z" pos="0.4103 0.0191 0.4821" range="-170.0000 10.0000" type="hinge"/>
+                    <geom fromto="0.4303 0.0191 0.4821 0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="4_LeftHand" user="0.7282 0.0191 0.4821" pos="0.6643 0.0191 0.4821">
+                      <geom pos="0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="4_LeftHand_x" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="4_LeftHand_y" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="4_LeftHand_z" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="4_RightUpLeg" user="-0.0849 0.0000 -0.4027" pos="0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="4_RightUpLeg_x" pos="-0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="4_RightUpLeg_y" pos="-0.0849 0.0000 -0.0248" range="-40.0000 90.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="4_RightUpLeg_z" pos="-0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="-0.0849 0.0000 -0.0448 -0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="4_RightLeg" user="-0.0849 0.0000 -0.7988" pos="-0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="4_RightLeg_x" pos="-0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="1" conaffinity="1" fromto="-0.0849 0.0000 -0.4227 -0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="4_RightFoot" user="-0.0849 -0.1308 -0.8464" pos="-0.0849 0.0000 -0.7988">
+            <geom contype="1" conaffinity="1" pos="-0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 -0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="4_RightFoot_x" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="4_RightFoot_y" pos="-0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="4_RightFoot_z" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+      <body name="4_LeftUpLeg" user="0.0849 0.0000 -0.4027" pos="-0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="4_LeftUpLeg_x" pos="0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="4_LeftUpLeg_y" pos="0.0849 0.0000 -0.0248" range="-90.0000 40.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="4_LeftUpLeg_z" pos="0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="0.0849 0.0000 -0.0448 0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="4_LeftLeg" user="0.0849 0.0000 -0.7988" pos="0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="4_LeftLeg_x" pos="0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="2" conaffinity="2" fromto="0.0849 0.0000 -0.4227 0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="4_LeftFoot" user="0.0849 -0.1308 -0.8464" pos="0.0849 0.0000 -0.7988">
+            <geom contype="2" conaffinity="2" pos="0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="4_LeftFoot_x" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="4_LeftFoot_y" pos="0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="4_LeftFoot_z" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="5_Hips" user="0.0000 0.0146 0.0054" pos="0.0000 0.0146 0.0054">
+      <geom fromto="-0.0750 0.0506 0.0054 0.0750 0.0506 0.0054" size="0.0820" type="capsule"/>
+      <joint armature="0" damping="0" limited="false" name="5_Hips" pos="0.0000 0.0000 0.0000" stiffness="0" type="free"/>
+      <body name="5_Spine" user="0.0000 0.0591 0.1523" pos="0.0000 0.0146 0.0054">
+        <geom fromto="-0.0550 0.0369 0.1109 0.0550 0.0369 0.1109" size="0.0590" type="capsule"/>
+        <joint axis="1.0000 0.0000 0.0000" name="5_Spine_x" pos="0.0000 0.0439 0.0658" range="-30.0000 45.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="5_Spine_y" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="5_Spine_z" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <body name="5_Spine1" user="0.0000 0.0668 0.2397" pos="0.0000 0.0591 0.1523">
+          <geom fromto="-0.0600 0.0370 0.1960 0.0600 0.0370 0.1960" size="0.0540" type="capsule"/>
+          <joint axis="1.0000 0.0000 0.0000" name="5_Spine1_x" pos="0.0000 0.0591 0.1523" range="-30.0000 45.0000" type="hinge"/>
+          <joint axis="0.0000 1.0000 0.0000" name="5_Spine1_y" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <joint axis="0.0000 0.0000 1.0000" name="5_Spine1_z" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <body name="5_Spine2" user="0.0000 0.0668 0.3275" pos="0.0000 0.0668 0.2397">
+            <geom fromto="-0.0575 0.0308 0.2896 0.0575 0.0308 0.2896" size="0.0570" type="capsule"/>
+            <joint axis="1.0000 0.0000 0.0000" name="5_Spine2_x" pos="0.0000 0.0668 0.2397" range="-30.0000 45.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="5_Spine2_y" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="5_Spine2_z" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <body name="5_Spine3" user="0.0000 0.0240 0.5074" pos="0.0000 0.0668 0.3275">
+              <geom fromto="-0.0550 0.0274 0.3914 0.0550 0.0274 0.3914" size="0.0620" type="capsule"/>
+              <joint axis="1.0000 0.0000 0.0000" name="5_Spine3_x" pos="0.0000 0.0668 0.3275" range="-30.0000 45.0000" type="hinge"/>
+              <joint axis="0.0000 1.0000 0.0000" name="5_Spine3_y" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <joint axis="0.0000 0.0000 1.0000" name="5_Spine3_z" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <body name="5_Neck" user="0.0000 0.0129 0.6768" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="5_Neck_x" pos="0.0000 0.0339 0.5579" range="-30.0000 45.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="5_Neck_y" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="5_Neck_z" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <geom fromto="0.0000 0.0304 0.5336 0.0000 0.0164 0.6131" size="0.0370" type="capsule"/>
+                <body name="5_Head" user="0.0000 0.0129 0.8188" pos="0.0000 0.0129 0.6768">
+                  <geom pos="0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom pos="-0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom fromto="0.0000 0.0129 0.6543 0.0000 0.0129 0.7013" size="0.0680" type="capsule"/>
+                  <joint axis="1.0000 0.0000 0.0000" name="5_Head_x" pos="0.0000 0.0129 0.6768" range="-30.0000 45.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="5_Head_y" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="5_Head_z" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                </body>
+              </body>
+              <body name="5_RightShoulder" user="-0.1708 0.0191 0.4821" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="5_RightShoulder_x" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="5_RightShoulder_y" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="5_RightShoulder_z" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="-0.0406 0.0191 0.4821 -0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="5_RightArm" user="-0.4103 0.0191 0.4821" pos="-0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="5_RightArm_x" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="5_RightArm_y" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="5_RightArm_z" pos="-0.1708 0.0191 0.4821" range="-60.0000 90.0000" type="hinge"/>
+                  <geom fromto="-0.1558 0.0191 0.4821 -0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="5_RightForeArm" user="-0.6643 0.0191 0.4821" pos="-0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="5_RightForeArm_z" pos="-0.4103 0.0191 0.4821" range="-10.0000 170.0000" type="hinge"/>
+                    <geom fromto="-0.4303 0.0191 0.4821 -0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="5_RightHand" user="-0.7282 0.0191 0.4821" pos="-0.6643 0.0191 0.4821">
+                      <geom pos="-0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="5_RightHand_x" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="5_RightHand_y" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="5_RightHand_z" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+              <body name="5_LeftShoulder" user="0.1708 0.0191 0.4821" pos="-0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="5_LeftShoulder_x" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="5_LeftShoulder_y" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="5_LeftShoulder_z" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="0.0406 0.0191 0.4821 0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="5_LeftArm" user="0.4103 0.0191 0.4821" pos="0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="5_LeftArm_x" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="5_LeftArm_y" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="5_LeftArm_z" pos="0.1708 0.0191 0.4821" range="-90.0000 60.0000" type="hinge"/>
+                  <geom fromto="0.1558 0.0191 0.4821 0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="5_LeftForeArm" user="0.6643 0.0191 0.4821" pos="0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="5_LeftForeArm_z" pos="0.4103 0.0191 0.4821" range="-170.0000 10.0000" type="hinge"/>
+                    <geom fromto="0.4303 0.0191 0.4821 0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="5_LeftHand" user="0.7282 0.0191 0.4821" pos="0.6643 0.0191 0.4821">
+                      <geom pos="0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="5_LeftHand_x" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="5_LeftHand_y" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="5_LeftHand_z" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="5_RightUpLeg" user="-0.0849 0.0000 -0.4027" pos="0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="5_RightUpLeg_x" pos="-0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="5_RightUpLeg_y" pos="-0.0849 0.0000 -0.0248" range="-40.0000 90.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="5_RightUpLeg_z" pos="-0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="-0.0849 0.0000 -0.0448 -0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="5_RightLeg" user="-0.0849 0.0000 -0.7988" pos="-0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="5_RightLeg_x" pos="-0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="1" conaffinity="1" fromto="-0.0849 0.0000 -0.4227 -0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="5_RightFoot" user="-0.0849 -0.1308 -0.8464" pos="-0.0849 0.0000 -0.7988">
+            <geom contype="1" conaffinity="1" pos="-0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 -0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="5_RightFoot_x" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="5_RightFoot_y" pos="-0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="5_RightFoot_z" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+      <body name="5_LeftUpLeg" user="0.0849 0.0000 -0.4027" pos="-0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="5_LeftUpLeg_x" pos="0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="5_LeftUpLeg_y" pos="0.0849 0.0000 -0.0248" range="-90.0000 40.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="5_LeftUpLeg_z" pos="0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="0.0849 0.0000 -0.0448 0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="5_LeftLeg" user="0.0849 0.0000 -0.7988" pos="0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="5_LeftLeg_x" pos="0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="2" conaffinity="2" fromto="0.0849 0.0000 -0.4227 0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="5_LeftFoot" user="0.0849 -0.1308 -0.8464" pos="0.0849 0.0000 -0.7988">
+            <geom contype="2" conaffinity="2" pos="0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="5_LeftFoot_x" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="5_LeftFoot_y" pos="0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="5_LeftFoot_z" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="6_Hips" user="0.0000 0.0146 0.0054" pos="0.0000 0.0146 0.0054">
+      <geom fromto="-0.0750 0.0506 0.0054 0.0750 0.0506 0.0054" size="0.0820" type="capsule"/>
+      <joint armature="0" damping="0" limited="false" name="6_Hips" pos="0.0000 0.0000 0.0000" stiffness="0" type="free"/>
+      <body name="6_Spine" user="0.0000 0.0591 0.1523" pos="0.0000 0.0146 0.0054">
+        <geom fromto="-0.0550 0.0369 0.1109 0.0550 0.0369 0.1109" size="0.0590" type="capsule"/>
+        <joint axis="1.0000 0.0000 0.0000" name="6_Spine_x" pos="0.0000 0.0439 0.0658" range="-30.0000 45.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="6_Spine_y" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="6_Spine_z" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <body name="6_Spine1" user="0.0000 0.0668 0.2397" pos="0.0000 0.0591 0.1523">
+          <geom fromto="-0.0600 0.0370 0.1960 0.0600 0.0370 0.1960" size="0.0540" type="capsule"/>
+          <joint axis="1.0000 0.0000 0.0000" name="6_Spine1_x" pos="0.0000 0.0591 0.1523" range="-30.0000 45.0000" type="hinge"/>
+          <joint axis="0.0000 1.0000 0.0000" name="6_Spine1_y" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <joint axis="0.0000 0.0000 1.0000" name="6_Spine1_z" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <body name="6_Spine2" user="0.0000 0.0668 0.3275" pos="0.0000 0.0668 0.2397">
+            <geom fromto="-0.0575 0.0308 0.2896 0.0575 0.0308 0.2896" size="0.0570" type="capsule"/>
+            <joint axis="1.0000 0.0000 0.0000" name="6_Spine2_x" pos="0.0000 0.0668 0.2397" range="-30.0000 45.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="6_Spine2_y" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="6_Spine2_z" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <body name="6_Spine3" user="0.0000 0.0240 0.5074" pos="0.0000 0.0668 0.3275">
+              <geom fromto="-0.0550 0.0274 0.3914 0.0550 0.0274 0.3914" size="0.0620" type="capsule"/>
+              <joint axis="1.0000 0.0000 0.0000" name="6_Spine3_x" pos="0.0000 0.0668 0.3275" range="-30.0000 45.0000" type="hinge"/>
+              <joint axis="0.0000 1.0000 0.0000" name="6_Spine3_y" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <joint axis="0.0000 0.0000 1.0000" name="6_Spine3_z" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <body name="6_Neck" user="0.0000 0.0129 0.6768" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="6_Neck_x" pos="0.0000 0.0339 0.5579" range="-30.0000 45.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="6_Neck_y" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="6_Neck_z" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <geom fromto="0.0000 0.0304 0.5336 0.0000 0.0164 0.6131" size="0.0370" type="capsule"/>
+                <body name="6_Head" user="0.0000 0.0129 0.8188" pos="0.0000 0.0129 0.6768">
+                  <geom pos="0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom pos="-0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom fromto="0.0000 0.0129 0.6543 0.0000 0.0129 0.7013" size="0.0680" type="capsule"/>
+                  <joint axis="1.0000 0.0000 0.0000" name="6_Head_x" pos="0.0000 0.0129 0.6768" range="-30.0000 45.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="6_Head_y" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="6_Head_z" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                </body>
+              </body>
+              <body name="6_RightShoulder" user="-0.1708 0.0191 0.4821" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="6_RightShoulder_x" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="6_RightShoulder_y" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="6_RightShoulder_z" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="-0.0406 0.0191 0.4821 -0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="6_RightArm" user="-0.4103 0.0191 0.4821" pos="-0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="6_RightArm_x" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="6_RightArm_y" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="6_RightArm_z" pos="-0.1708 0.0191 0.4821" range="-60.0000 90.0000" type="hinge"/>
+                  <geom fromto="-0.1558 0.0191 0.4821 -0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="6_RightForeArm" user="-0.6643 0.0191 0.4821" pos="-0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="6_RightForeArm_z" pos="-0.4103 0.0191 0.4821" range="-10.0000 170.0000" type="hinge"/>
+                    <geom fromto="-0.4303 0.0191 0.4821 -0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="6_RightHand" user="-0.7282 0.0191 0.4821" pos="-0.6643 0.0191 0.4821">
+                      <geom pos="-0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="6_RightHand_x" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="6_RightHand_y" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="6_RightHand_z" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+              <body name="6_LeftShoulder" user="0.1708 0.0191 0.4821" pos="-0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="6_LeftShoulder_x" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="6_LeftShoulder_y" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="6_LeftShoulder_z" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="0.0406 0.0191 0.4821 0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="6_LeftArm" user="0.4103 0.0191 0.4821" pos="0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="6_LeftArm_x" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="6_LeftArm_y" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="6_LeftArm_z" pos="0.1708 0.0191 0.4821" range="-90.0000 60.0000" type="hinge"/>
+                  <geom fromto="0.1558 0.0191 0.4821 0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="6_LeftForeArm" user="0.6643 0.0191 0.4821" pos="0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="6_LeftForeArm_z" pos="0.4103 0.0191 0.4821" range="-170.0000 10.0000" type="hinge"/>
+                    <geom fromto="0.4303 0.0191 0.4821 0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="6_LeftHand" user="0.7282 0.0191 0.4821" pos="0.6643 0.0191 0.4821">
+                      <geom pos="0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="6_LeftHand_x" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="6_LeftHand_y" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="6_LeftHand_z" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="6_RightUpLeg" user="-0.0849 0.0000 -0.4027" pos="0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="6_RightUpLeg_x" pos="-0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="6_RightUpLeg_y" pos="-0.0849 0.0000 -0.0248" range="-40.0000 90.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="6_RightUpLeg_z" pos="-0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="-0.0849 0.0000 -0.0448 -0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="6_RightLeg" user="-0.0849 0.0000 -0.7988" pos="-0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="6_RightLeg_x" pos="-0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="1" conaffinity="1" fromto="-0.0849 0.0000 -0.4227 -0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="6_RightFoot" user="-0.0849 -0.1308 -0.8464" pos="-0.0849 0.0000 -0.7988">
+            <geom contype="1" conaffinity="1" pos="-0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 -0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="6_RightFoot_x" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="6_RightFoot_y" pos="-0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="6_RightFoot_z" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+      <body name="6_LeftUpLeg" user="0.0849 0.0000 -0.4027" pos="-0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="6_LeftUpLeg_x" pos="0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="6_LeftUpLeg_y" pos="0.0849 0.0000 -0.0248" range="-90.0000 40.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="6_LeftUpLeg_z" pos="0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="0.0849 0.0000 -0.0448 0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="6_LeftLeg" user="0.0849 0.0000 -0.7988" pos="0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="6_LeftLeg_x" pos="0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="2" conaffinity="2" fromto="0.0849 0.0000 -0.4227 0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="6_LeftFoot" user="0.0849 -0.1308 -0.8464" pos="0.0849 0.0000 -0.7988">
+            <geom contype="2" conaffinity="2" pos="0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="6_LeftFoot_x" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="6_LeftFoot_y" pos="0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="6_LeftFoot_z" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="7_Hips" user="0.0000 0.0146 0.0054" pos="0.0000 0.0146 0.0054">
+      <geom fromto="-0.0750 0.0506 0.0054 0.0750 0.0506 0.0054" size="0.0820" type="capsule"/>
+      <joint armature="0" damping="0" limited="false" name="7_Hips" pos="0.0000 0.0000 0.0000" stiffness="0" type="free"/>
+      <body name="7_Spine" user="0.0000 0.0591 0.1523" pos="0.0000 0.0146 0.0054">
+        <geom fromto="-0.0550 0.0369 0.1109 0.0550 0.0369 0.1109" size="0.0590" type="capsule"/>
+        <joint axis="1.0000 0.0000 0.0000" name="7_Spine_x" pos="0.0000 0.0439 0.0658" range="-30.0000 45.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="7_Spine_y" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="7_Spine_z" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <body name="7_Spine1" user="0.0000 0.0668 0.2397" pos="0.0000 0.0591 0.1523">
+          <geom fromto="-0.0600 0.0370 0.1960 0.0600 0.0370 0.1960" size="0.0540" type="capsule"/>
+          <joint axis="1.0000 0.0000 0.0000" name="7_Spine1_x" pos="0.0000 0.0591 0.1523" range="-30.0000 45.0000" type="hinge"/>
+          <joint axis="0.0000 1.0000 0.0000" name="7_Spine1_y" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <joint axis="0.0000 0.0000 1.0000" name="7_Spine1_z" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <body name="7_Spine2" user="0.0000 0.0668 0.3275" pos="0.0000 0.0668 0.2397">
+            <geom fromto="-0.0575 0.0308 0.2896 0.0575 0.0308 0.2896" size="0.0570" type="capsule"/>
+            <joint axis="1.0000 0.0000 0.0000" name="7_Spine2_x" pos="0.0000 0.0668 0.2397" range="-30.0000 45.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="7_Spine2_y" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="7_Spine2_z" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <body name="7_Spine3" user="0.0000 0.0240 0.5074" pos="0.0000 0.0668 0.3275">
+              <geom fromto="-0.0550 0.0274 0.3914 0.0550 0.0274 0.3914" size="0.0620" type="capsule"/>
+              <joint axis="1.0000 0.0000 0.0000" name="7_Spine3_x" pos="0.0000 0.0668 0.3275" range="-30.0000 45.0000" type="hinge"/>
+              <joint axis="0.0000 1.0000 0.0000" name="7_Spine3_y" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <joint axis="0.0000 0.0000 1.0000" name="7_Spine3_z" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <body name="7_Neck" user="0.0000 0.0129 0.6768" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="7_Neck_x" pos="0.0000 0.0339 0.5579" range="-30.0000 45.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="7_Neck_y" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="7_Neck_z" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <geom fromto="0.0000 0.0304 0.5336 0.0000 0.0164 0.6131" size="0.0370" type="capsule"/>
+                <body name="7_Head" user="0.0000 0.0129 0.8188" pos="0.0000 0.0129 0.6768">
+                  <geom pos="0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom pos="-0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom fromto="0.0000 0.0129 0.6543 0.0000 0.0129 0.7013" size="0.0680" type="capsule"/>
+                  <joint axis="1.0000 0.0000 0.0000" name="7_Head_x" pos="0.0000 0.0129 0.6768" range="-30.0000 45.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="7_Head_y" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="7_Head_z" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                </body>
+              </body>
+              <body name="7_RightShoulder" user="-0.1708 0.0191 0.4821" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="7_RightShoulder_x" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="7_RightShoulder_y" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="7_RightShoulder_z" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="-0.0406 0.0191 0.4821 -0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="7_RightArm" user="-0.4103 0.0191 0.4821" pos="-0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="7_RightArm_x" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="7_RightArm_y" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="7_RightArm_z" pos="-0.1708 0.0191 0.4821" range="-60.0000 90.0000" type="hinge"/>
+                  <geom fromto="-0.1558 0.0191 0.4821 -0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="7_RightForeArm" user="-0.6643 0.0191 0.4821" pos="-0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="7_RightForeArm_z" pos="-0.4103 0.0191 0.4821" range="-10.0000 170.0000" type="hinge"/>
+                    <geom fromto="-0.4303 0.0191 0.4821 -0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="7_RightHand" user="-0.7282 0.0191 0.4821" pos="-0.6643 0.0191 0.4821">
+                      <geom pos="-0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="7_RightHand_x" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="7_RightHand_y" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="7_RightHand_z" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+              <body name="7_LeftShoulder" user="0.1708 0.0191 0.4821" pos="-0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="7_LeftShoulder_x" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="7_LeftShoulder_y" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="7_LeftShoulder_z" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="0.0406 0.0191 0.4821 0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="7_LeftArm" user="0.4103 0.0191 0.4821" pos="0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="7_LeftArm_x" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="7_LeftArm_y" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="7_LeftArm_z" pos="0.1708 0.0191 0.4821" range="-90.0000 60.0000" type="hinge"/>
+                  <geom fromto="0.1558 0.0191 0.4821 0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="7_LeftForeArm" user="0.6643 0.0191 0.4821" pos="0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="7_LeftForeArm_z" pos="0.4103 0.0191 0.4821" range="-170.0000 10.0000" type="hinge"/>
+                    <geom fromto="0.4303 0.0191 0.4821 0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="7_LeftHand" user="0.7282 0.0191 0.4821" pos="0.6643 0.0191 0.4821">
+                      <geom pos="0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="7_LeftHand_x" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="7_LeftHand_y" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="7_LeftHand_z" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="7_RightUpLeg" user="-0.0849 0.0000 -0.4027" pos="0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="7_RightUpLeg_x" pos="-0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="7_RightUpLeg_y" pos="-0.0849 0.0000 -0.0248" range="-40.0000 90.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="7_RightUpLeg_z" pos="-0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="-0.0849 0.0000 -0.0448 -0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="7_RightLeg" user="-0.0849 0.0000 -0.7988" pos="-0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="7_RightLeg_x" pos="-0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="1" conaffinity="1" fromto="-0.0849 0.0000 -0.4227 -0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="7_RightFoot" user="-0.0849 -0.1308 -0.8464" pos="-0.0849 0.0000 -0.7988">
+            <geom contype="1" conaffinity="1" pos="-0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 -0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="7_RightFoot_x" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="7_RightFoot_y" pos="-0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="7_RightFoot_z" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+      <body name="7_LeftUpLeg" user="0.0849 0.0000 -0.4027" pos="-0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="7_LeftUpLeg_x" pos="0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="7_LeftUpLeg_y" pos="0.0849 0.0000 -0.0248" range="-90.0000 40.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="7_LeftUpLeg_z" pos="0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="0.0849 0.0000 -0.0448 0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="7_LeftLeg" user="0.0849 0.0000 -0.7988" pos="0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="7_LeftLeg_x" pos="0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="2" conaffinity="2" fromto="0.0849 0.0000 -0.4227 0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="7_LeftFoot" user="0.0849 -0.1308 -0.8464" pos="0.0849 0.0000 -0.7988">
+            <geom contype="2" conaffinity="2" pos="0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="7_LeftFoot_x" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="7_LeftFoot_y" pos="0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="7_LeftFoot_z" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="8_Hips" user="0.0000 0.0146 0.0054" pos="0.0000 0.0146 0.0054">
+      <geom fromto="-0.0750 0.0506 0.0054 0.0750 0.0506 0.0054" size="0.0820" type="capsule"/>
+      <joint armature="0" damping="0" limited="false" name="8_Hips" pos="0.0000 0.0000 0.0000" stiffness="0" type="free"/>
+      <body name="8_Spine" user="0.0000 0.0591 0.1523" pos="0.0000 0.0146 0.0054">
+        <geom fromto="-0.0550 0.0369 0.1109 0.0550 0.0369 0.1109" size="0.0590" type="capsule"/>
+        <joint axis="1.0000 0.0000 0.0000" name="8_Spine_x" pos="0.0000 0.0439 0.0658" range="-30.0000 45.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="8_Spine_y" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="8_Spine_z" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <body name="8_Spine1" user="0.0000 0.0668 0.2397" pos="0.0000 0.0591 0.1523">
+          <geom fromto="-0.0600 0.0370 0.1960 0.0600 0.0370 0.1960" size="0.0540" type="capsule"/>
+          <joint axis="1.0000 0.0000 0.0000" name="8_Spine1_x" pos="0.0000 0.0591 0.1523" range="-30.0000 45.0000" type="hinge"/>
+          <joint axis="0.0000 1.0000 0.0000" name="8_Spine1_y" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <joint axis="0.0000 0.0000 1.0000" name="8_Spine1_z" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <body name="8_Spine2" user="0.0000 0.0668 0.3275" pos="0.0000 0.0668 0.2397">
+            <geom fromto="-0.0575 0.0308 0.2896 0.0575 0.0308 0.2896" size="0.0570" type="capsule"/>
+            <joint axis="1.0000 0.0000 0.0000" name="8_Spine2_x" pos="0.0000 0.0668 0.2397" range="-30.0000 45.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="8_Spine2_y" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="8_Spine2_z" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <body name="8_Spine3" user="0.0000 0.0240 0.5074" pos="0.0000 0.0668 0.3275">
+              <geom fromto="-0.0550 0.0274 0.3914 0.0550 0.0274 0.3914" size="0.0620" type="capsule"/>
+              <joint axis="1.0000 0.0000 0.0000" name="8_Spine3_x" pos="0.0000 0.0668 0.3275" range="-30.0000 45.0000" type="hinge"/>
+              <joint axis="0.0000 1.0000 0.0000" name="8_Spine3_y" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <joint axis="0.0000 0.0000 1.0000" name="8_Spine3_z" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <body name="8_Neck" user="0.0000 0.0129 0.6768" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="8_Neck_x" pos="0.0000 0.0339 0.5579" range="-30.0000 45.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="8_Neck_y" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="8_Neck_z" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <geom fromto="0.0000 0.0304 0.5336 0.0000 0.0164 0.6131" size="0.0370" type="capsule"/>
+                <body name="8_Head" user="0.0000 0.0129 0.8188" pos="0.0000 0.0129 0.6768">
+                  <geom pos="0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom pos="-0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom fromto="0.0000 0.0129 0.6543 0.0000 0.0129 0.7013" size="0.0680" type="capsule"/>
+                  <joint axis="1.0000 0.0000 0.0000" name="8_Head_x" pos="0.0000 0.0129 0.6768" range="-30.0000 45.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="8_Head_y" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="8_Head_z" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                </body>
+              </body>
+              <body name="8_RightShoulder" user="-0.1708 0.0191 0.4821" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="8_RightShoulder_x" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="8_RightShoulder_y" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="8_RightShoulder_z" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="-0.0406 0.0191 0.4821 -0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="8_RightArm" user="-0.4103 0.0191 0.4821" pos="-0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="8_RightArm_x" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="8_RightArm_y" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="8_RightArm_z" pos="-0.1708 0.0191 0.4821" range="-60.0000 90.0000" type="hinge"/>
+                  <geom fromto="-0.1558 0.0191 0.4821 -0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="8_RightForeArm" user="-0.6643 0.0191 0.4821" pos="-0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="8_RightForeArm_z" pos="-0.4103 0.0191 0.4821" range="-10.0000 170.0000" type="hinge"/>
+                    <geom fromto="-0.4303 0.0191 0.4821 -0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="8_RightHand" user="-0.7282 0.0191 0.4821" pos="-0.6643 0.0191 0.4821">
+                      <geom pos="-0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="8_RightHand_x" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="8_RightHand_y" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="8_RightHand_z" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+              <body name="8_LeftShoulder" user="0.1708 0.0191 0.4821" pos="-0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="8_LeftShoulder_x" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="8_LeftShoulder_y" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="8_LeftShoulder_z" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="0.0406 0.0191 0.4821 0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="8_LeftArm" user="0.4103 0.0191 0.4821" pos="0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="8_LeftArm_x" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="8_LeftArm_y" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="8_LeftArm_z" pos="0.1708 0.0191 0.4821" range="-90.0000 60.0000" type="hinge"/>
+                  <geom fromto="0.1558 0.0191 0.4821 0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="8_LeftForeArm" user="0.6643 0.0191 0.4821" pos="0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="8_LeftForeArm_z" pos="0.4103 0.0191 0.4821" range="-170.0000 10.0000" type="hinge"/>
+                    <geom fromto="0.4303 0.0191 0.4821 0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="8_LeftHand" user="0.7282 0.0191 0.4821" pos="0.6643 0.0191 0.4821">
+                      <geom pos="0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="8_LeftHand_x" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="8_LeftHand_y" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="8_LeftHand_z" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="8_RightUpLeg" user="-0.0849 0.0000 -0.4027" pos="0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="8_RightUpLeg_x" pos="-0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="8_RightUpLeg_y" pos="-0.0849 0.0000 -0.0248" range="-40.0000 90.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="8_RightUpLeg_z" pos="-0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="-0.0849 0.0000 -0.0448 -0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="8_RightLeg" user="-0.0849 0.0000 -0.7988" pos="-0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="8_RightLeg_x" pos="-0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="1" conaffinity="1" fromto="-0.0849 0.0000 -0.4227 -0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="8_RightFoot" user="-0.0849 -0.1308 -0.8464" pos="-0.0849 0.0000 -0.7988">
+            <geom contype="1" conaffinity="1" pos="-0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 -0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="8_RightFoot_x" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="8_RightFoot_y" pos="-0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="8_RightFoot_z" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+      <body name="8_LeftUpLeg" user="0.0849 0.0000 -0.4027" pos="-0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="8_LeftUpLeg_x" pos="0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="8_LeftUpLeg_y" pos="0.0849 0.0000 -0.0248" range="-90.0000 40.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="8_LeftUpLeg_z" pos="0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="0.0849 0.0000 -0.0448 0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="8_LeftLeg" user="0.0849 0.0000 -0.7988" pos="0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="8_LeftLeg_x" pos="0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="2" conaffinity="2" fromto="0.0849 0.0000 -0.4227 0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="8_LeftFoot" user="0.0849 -0.1308 -0.8464" pos="0.0849 0.0000 -0.7988">
+            <geom contype="2" conaffinity="2" pos="0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="8_LeftFoot_x" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="8_LeftFoot_y" pos="0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="8_LeftFoot_z" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="9_Hips" user="0.0000 0.0146 0.0054" pos="0.0000 0.0146 0.0054">
+      <geom fromto="-0.0750 0.0506 0.0054 0.0750 0.0506 0.0054" size="0.0820" type="capsule"/>
+      <joint armature="0" damping="0" limited="false" name="9_Hips" pos="0.0000 0.0000 0.0000" stiffness="0" type="free"/>
+      <body name="9_Spine" user="0.0000 0.0591 0.1523" pos="0.0000 0.0146 0.0054">
+        <geom fromto="-0.0550 0.0369 0.1109 0.0550 0.0369 0.1109" size="0.0590" type="capsule"/>
+        <joint axis="1.0000 0.0000 0.0000" name="9_Spine_x" pos="0.0000 0.0439 0.0658" range="-30.0000 45.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="9_Spine_y" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="9_Spine_z" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <body name="9_Spine1" user="0.0000 0.0668 0.2397" pos="0.0000 0.0591 0.1523">
+          <geom fromto="-0.0600 0.0370 0.1960 0.0600 0.0370 0.1960" size="0.0540" type="capsule"/>
+          <joint axis="1.0000 0.0000 0.0000" name="9_Spine1_x" pos="0.0000 0.0591 0.1523" range="-30.0000 45.0000" type="hinge"/>
+          <joint axis="0.0000 1.0000 0.0000" name="9_Spine1_y" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <joint axis="0.0000 0.0000 1.0000" name="9_Spine1_z" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <body name="9_Spine2" user="0.0000 0.0668 0.3275" pos="0.0000 0.0668 0.2397">
+            <geom fromto="-0.0575 0.0308 0.2896 0.0575 0.0308 0.2896" size="0.0570" type="capsule"/>
+            <joint axis="1.0000 0.0000 0.0000" name="9_Spine2_x" pos="0.0000 0.0668 0.2397" range="-30.0000 45.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="9_Spine2_y" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="9_Spine2_z" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <body name="9_Spine3" user="0.0000 0.0240 0.5074" pos="0.0000 0.0668 0.3275">
+              <geom fromto="-0.0550 0.0274 0.3914 0.0550 0.0274 0.3914" size="0.0620" type="capsule"/>
+              <joint axis="1.0000 0.0000 0.0000" name="9_Spine3_x" pos="0.0000 0.0668 0.3275" range="-30.0000 45.0000" type="hinge"/>
+              <joint axis="0.0000 1.0000 0.0000" name="9_Spine3_y" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <joint axis="0.0000 0.0000 1.0000" name="9_Spine3_z" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <body name="9_Neck" user="0.0000 0.0129 0.6768" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="9_Neck_x" pos="0.0000 0.0339 0.5579" range="-30.0000 45.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="9_Neck_y" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="9_Neck_z" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <geom fromto="0.0000 0.0304 0.5336 0.0000 0.0164 0.6131" size="0.0370" type="capsule"/>
+                <body name="9_Head" user="0.0000 0.0129 0.8188" pos="0.0000 0.0129 0.6768">
+                  <geom pos="0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom pos="-0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom fromto="0.0000 0.0129 0.6543 0.0000 0.0129 0.7013" size="0.0680" type="capsule"/>
+                  <joint axis="1.0000 0.0000 0.0000" name="9_Head_x" pos="0.0000 0.0129 0.6768" range="-30.0000 45.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="9_Head_y" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="9_Head_z" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                </body>
+              </body>
+              <body name="9_RightShoulder" user="-0.1708 0.0191 0.4821" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="9_RightShoulder_x" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="9_RightShoulder_y" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="9_RightShoulder_z" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="-0.0406 0.0191 0.4821 -0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="9_RightArm" user="-0.4103 0.0191 0.4821" pos="-0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="9_RightArm_x" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="9_RightArm_y" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="9_RightArm_z" pos="-0.1708 0.0191 0.4821" range="-60.0000 90.0000" type="hinge"/>
+                  <geom fromto="-0.1558 0.0191 0.4821 -0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="9_RightForeArm" user="-0.6643 0.0191 0.4821" pos="-0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="9_RightForeArm_z" pos="-0.4103 0.0191 0.4821" range="-10.0000 170.0000" type="hinge"/>
+                    <geom fromto="-0.4303 0.0191 0.4821 -0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="9_RightHand" user="-0.7282 0.0191 0.4821" pos="-0.6643 0.0191 0.4821">
+                      <geom pos="-0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="9_RightHand_x" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="9_RightHand_y" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="9_RightHand_z" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+              <body name="9_LeftShoulder" user="0.1708 0.0191 0.4821" pos="-0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="9_LeftShoulder_x" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="9_LeftShoulder_y" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="9_LeftShoulder_z" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="0.0406 0.0191 0.4821 0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="9_LeftArm" user="0.4103 0.0191 0.4821" pos="0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="9_LeftArm_x" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="9_LeftArm_y" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="9_LeftArm_z" pos="0.1708 0.0191 0.4821" range="-90.0000 60.0000" type="hinge"/>
+                  <geom fromto="0.1558 0.0191 0.4821 0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="9_LeftForeArm" user="0.6643 0.0191 0.4821" pos="0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="9_LeftForeArm_z" pos="0.4103 0.0191 0.4821" range="-170.0000 10.0000" type="hinge"/>
+                    <geom fromto="0.4303 0.0191 0.4821 0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="9_LeftHand" user="0.7282 0.0191 0.4821" pos="0.6643 0.0191 0.4821">
+                      <geom pos="0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="9_LeftHand_x" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="9_LeftHand_y" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="9_LeftHand_z" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="9_RightUpLeg" user="-0.0849 0.0000 -0.4027" pos="0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="9_RightUpLeg_x" pos="-0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="9_RightUpLeg_y" pos="-0.0849 0.0000 -0.0248" range="-40.0000 90.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="9_RightUpLeg_z" pos="-0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="-0.0849 0.0000 -0.0448 -0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="9_RightLeg" user="-0.0849 0.0000 -0.7988" pos="-0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="9_RightLeg_x" pos="-0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="1" conaffinity="1" fromto="-0.0849 0.0000 -0.4227 -0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="9_RightFoot" user="-0.0849 -0.1308 -0.8464" pos="-0.0849 0.0000 -0.7988">
+            <geom contype="1" conaffinity="1" pos="-0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 -0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="9_RightFoot_x" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="9_RightFoot_y" pos="-0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="9_RightFoot_z" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+      <body name="9_LeftUpLeg" user="0.0849 0.0000 -0.4027" pos="-0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="9_LeftUpLeg_x" pos="0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="9_LeftUpLeg_y" pos="0.0849 0.0000 -0.0248" range="-90.0000 40.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="9_LeftUpLeg_z" pos="0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="0.0849 0.0000 -0.0448 0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="9_LeftLeg" user="0.0849 0.0000 -0.7988" pos="0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="9_LeftLeg_x" pos="0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="2" conaffinity="2" fromto="0.0849 0.0000 -0.4227 0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="9_LeftFoot" user="0.0849 -0.1308 -0.8464" pos="0.0849 0.0000 -0.7988">
+            <geom contype="2" conaffinity="2" pos="0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="9_LeftFoot_x" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="9_LeftFoot_y" pos="0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="9_LeftFoot_z" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="10_Hips" user="0.0000 0.0146 0.0054" pos="0.0000 0.0146 0.0054">
+      <geom fromto="-0.0750 0.0506 0.0054 0.0750 0.0506 0.0054" size="0.0820" type="capsule"/>
+      <joint armature="0" damping="0" limited="false" name="10_Hips" pos="0.0000 0.0000 0.0000" stiffness="0" type="free"/>
+      <body name="10_Spine" user="0.0000 0.0591 0.1523" pos="0.0000 0.0146 0.0054">
+        <geom fromto="-0.0550 0.0369 0.1109 0.0550 0.0369 0.1109" size="0.0590" type="capsule"/>
+        <joint axis="1.0000 0.0000 0.0000" name="10_Spine_x" pos="0.0000 0.0439 0.0658" range="-30.0000 45.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="10_Spine_y" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="10_Spine_z" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <body name="10_Spine1" user="0.0000 0.0668 0.2397" pos="0.0000 0.0591 0.1523">
+          <geom fromto="-0.0600 0.0370 0.1960 0.0600 0.0370 0.1960" size="0.0540" type="capsule"/>
+          <joint axis="1.0000 0.0000 0.0000" name="10_Spine1_x" pos="0.0000 0.0591 0.1523" range="-30.0000 45.0000" type="hinge"/>
+          <joint axis="0.0000 1.0000 0.0000" name="10_Spine1_y" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <joint axis="0.0000 0.0000 1.0000" name="10_Spine1_z" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <body name="10_Spine2" user="0.0000 0.0668 0.3275" pos="0.0000 0.0668 0.2397">
+            <geom fromto="-0.0575 0.0308 0.2896 0.0575 0.0308 0.2896" size="0.0570" type="capsule"/>
+            <joint axis="1.0000 0.0000 0.0000" name="10_Spine2_x" pos="0.0000 0.0668 0.2397" range="-30.0000 45.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="10_Spine2_y" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="10_Spine2_z" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <body name="10_Spine3" user="0.0000 0.0240 0.5074" pos="0.0000 0.0668 0.3275">
+              <geom fromto="-0.0550 0.0274 0.3914 0.0550 0.0274 0.3914" size="0.0620" type="capsule"/>
+              <joint axis="1.0000 0.0000 0.0000" name="10_Spine3_x" pos="0.0000 0.0668 0.3275" range="-30.0000 45.0000" type="hinge"/>
+              <joint axis="0.0000 1.0000 0.0000" name="10_Spine3_y" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <joint axis="0.0000 0.0000 1.0000" name="10_Spine3_z" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <body name="10_Neck" user="0.0000 0.0129 0.6768" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="10_Neck_x" pos="0.0000 0.0339 0.5579" range="-30.0000 45.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="10_Neck_y" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="10_Neck_z" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <geom fromto="0.0000 0.0304 0.5336 0.0000 0.0164 0.6131" size="0.0370" type="capsule"/>
+                <body name="10_Head" user="0.0000 0.0129 0.8188" pos="0.0000 0.0129 0.6768">
+                  <geom pos="0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom pos="-0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom fromto="0.0000 0.0129 0.6543 0.0000 0.0129 0.7013" size="0.0680" type="capsule"/>
+                  <joint axis="1.0000 0.0000 0.0000" name="10_Head_x" pos="0.0000 0.0129 0.6768" range="-30.0000 45.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="10_Head_y" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="10_Head_z" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                </body>
+              </body>
+              <body name="10_RightShoulder" user="-0.1708 0.0191 0.4821" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="10_RightShoulder_x" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="10_RightShoulder_y" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="10_RightShoulder_z" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="-0.0406 0.0191 0.4821 -0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="10_RightArm" user="-0.4103 0.0191 0.4821" pos="-0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="10_RightArm_x" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="10_RightArm_y" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="10_RightArm_z" pos="-0.1708 0.0191 0.4821" range="-60.0000 90.0000" type="hinge"/>
+                  <geom fromto="-0.1558 0.0191 0.4821 -0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="10_RightForeArm" user="-0.6643 0.0191 0.4821" pos="-0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="10_RightForeArm_z" pos="-0.4103 0.0191 0.4821" range="-10.0000 170.0000" type="hinge"/>
+                    <geom fromto="-0.4303 0.0191 0.4821 -0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="10_RightHand" user="-0.7282 0.0191 0.4821" pos="-0.6643 0.0191 0.4821">
+                      <geom pos="-0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="10_RightHand_x" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="10_RightHand_y" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="10_RightHand_z" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+              <body name="10_LeftShoulder" user="0.1708 0.0191 0.4821" pos="-0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="10_LeftShoulder_x" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="10_LeftShoulder_y" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="10_LeftShoulder_z" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="0.0406 0.0191 0.4821 0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="10_LeftArm" user="0.4103 0.0191 0.4821" pos="0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="10_LeftArm_x" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="10_LeftArm_y" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="10_LeftArm_z" pos="0.1708 0.0191 0.4821" range="-90.0000 60.0000" type="hinge"/>
+                  <geom fromto="0.1558 0.0191 0.4821 0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="10_LeftForeArm" user="0.6643 0.0191 0.4821" pos="0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="10_LeftForeArm_z" pos="0.4103 0.0191 0.4821" range="-170.0000 10.0000" type="hinge"/>
+                    <geom fromto="0.4303 0.0191 0.4821 0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="10_LeftHand" user="0.7282 0.0191 0.4821" pos="0.6643 0.0191 0.4821">
+                      <geom pos="0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="10_LeftHand_x" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="10_LeftHand_y" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="10_LeftHand_z" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="10_RightUpLeg" user="-0.0849 0.0000 -0.4027" pos="0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="10_RightUpLeg_x" pos="-0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="10_RightUpLeg_y" pos="-0.0849 0.0000 -0.0248" range="-40.0000 90.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="10_RightUpLeg_z" pos="-0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="-0.0849 0.0000 -0.0448 -0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="10_RightLeg" user="-0.0849 0.0000 -0.7988" pos="-0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="10_RightLeg_x" pos="-0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="1" conaffinity="1" fromto="-0.0849 0.0000 -0.4227 -0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="10_RightFoot" user="-0.0849 -0.1308 -0.8464" pos="-0.0849 0.0000 -0.7988">
+            <geom contype="1" conaffinity="1" pos="-0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 -0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="10_RightFoot_x" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="10_RightFoot_y" pos="-0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="10_RightFoot_z" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+      <body name="10_LeftUpLeg" user="0.0849 0.0000 -0.4027" pos="-0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="10_LeftUpLeg_x" pos="0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="10_LeftUpLeg_y" pos="0.0849 0.0000 -0.0248" range="-90.0000 40.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="10_LeftUpLeg_z" pos="0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="0.0849 0.0000 -0.0448 0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="10_LeftLeg" user="0.0849 0.0000 -0.7988" pos="0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="10_LeftLeg_x" pos="0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="2" conaffinity="2" fromto="0.0849 0.0000 -0.4227 0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="10_LeftFoot" user="0.0849 -0.1308 -0.8464" pos="0.0849 0.0000 -0.7988">
+            <geom contype="2" conaffinity="2" pos="0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="10_LeftFoot_x" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="10_LeftFoot_y" pos="0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="10_LeftFoot_z" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="11_Hips" user="0.0000 0.0146 0.0054" pos="0.0000 0.0146 0.0054">
+      <geom fromto="-0.0750 0.0506 0.0054 0.0750 0.0506 0.0054" size="0.0820" type="capsule"/>
+      <joint armature="0" damping="0" limited="false" name="11_Hips" pos="0.0000 0.0000 0.0000" stiffness="0" type="free"/>
+      <body name="11_Spine" user="0.0000 0.0591 0.1523" pos="0.0000 0.0146 0.0054">
+        <geom fromto="-0.0550 0.0369 0.1109 0.0550 0.0369 0.1109" size="0.0590" type="capsule"/>
+        <joint axis="1.0000 0.0000 0.0000" name="11_Spine_x" pos="0.0000 0.0439 0.0658" range="-30.0000 45.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="11_Spine_y" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="11_Spine_z" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <body name="11_Spine1" user="0.0000 0.0668 0.2397" pos="0.0000 0.0591 0.1523">
+          <geom fromto="-0.0600 0.0370 0.1960 0.0600 0.0370 0.1960" size="0.0540" type="capsule"/>
+          <joint axis="1.0000 0.0000 0.0000" name="11_Spine1_x" pos="0.0000 0.0591 0.1523" range="-30.0000 45.0000" type="hinge"/>
+          <joint axis="0.0000 1.0000 0.0000" name="11_Spine1_y" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <joint axis="0.0000 0.0000 1.0000" name="11_Spine1_z" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <body name="11_Spine2" user="0.0000 0.0668 0.3275" pos="0.0000 0.0668 0.2397">
+            <geom fromto="-0.0575 0.0308 0.2896 0.0575 0.0308 0.2896" size="0.0570" type="capsule"/>
+            <joint axis="1.0000 0.0000 0.0000" name="11_Spine2_x" pos="0.0000 0.0668 0.2397" range="-30.0000 45.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="11_Spine2_y" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="11_Spine2_z" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <body name="11_Spine3" user="0.0000 0.0240 0.5074" pos="0.0000 0.0668 0.3275">
+              <geom fromto="-0.0550 0.0274 0.3914 0.0550 0.0274 0.3914" size="0.0620" type="capsule"/>
+              <joint axis="1.0000 0.0000 0.0000" name="11_Spine3_x" pos="0.0000 0.0668 0.3275" range="-30.0000 45.0000" type="hinge"/>
+              <joint axis="0.0000 1.0000 0.0000" name="11_Spine3_y" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <joint axis="0.0000 0.0000 1.0000" name="11_Spine3_z" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <body name="11_Neck" user="0.0000 0.0129 0.6768" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="11_Neck_x" pos="0.0000 0.0339 0.5579" range="-30.0000 45.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="11_Neck_y" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="11_Neck_z" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <geom fromto="0.0000 0.0304 0.5336 0.0000 0.0164 0.6131" size="0.0370" type="capsule"/>
+                <body name="11_Head" user="0.0000 0.0129 0.8188" pos="0.0000 0.0129 0.6768">
+                  <geom pos="0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom pos="-0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom fromto="0.0000 0.0129 0.6543 0.0000 0.0129 0.7013" size="0.0680" type="capsule"/>
+                  <joint axis="1.0000 0.0000 0.0000" name="11_Head_x" pos="0.0000 0.0129 0.6768" range="-30.0000 45.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="11_Head_y" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="11_Head_z" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                </body>
+              </body>
+              <body name="11_RightShoulder" user="-0.1708 0.0191 0.4821" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="11_RightShoulder_x" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="11_RightShoulder_y" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="11_RightShoulder_z" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="-0.0406 0.0191 0.4821 -0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="11_RightArm" user="-0.4103 0.0191 0.4821" pos="-0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="11_RightArm_x" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="11_RightArm_y" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="11_RightArm_z" pos="-0.1708 0.0191 0.4821" range="-60.0000 90.0000" type="hinge"/>
+                  <geom fromto="-0.1558 0.0191 0.4821 -0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="11_RightForeArm" user="-0.6643 0.0191 0.4821" pos="-0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="11_RightForeArm_z" pos="-0.4103 0.0191 0.4821" range="-10.0000 170.0000" type="hinge"/>
+                    <geom fromto="-0.4303 0.0191 0.4821 -0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="11_RightHand" user="-0.7282 0.0191 0.4821" pos="-0.6643 0.0191 0.4821">
+                      <geom pos="-0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="11_RightHand_x" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="11_RightHand_y" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="11_RightHand_z" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+              <body name="11_LeftShoulder" user="0.1708 0.0191 0.4821" pos="-0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="11_LeftShoulder_x" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="11_LeftShoulder_y" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="11_LeftShoulder_z" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="0.0406 0.0191 0.4821 0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="11_LeftArm" user="0.4103 0.0191 0.4821" pos="0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="11_LeftArm_x" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="11_LeftArm_y" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="11_LeftArm_z" pos="0.1708 0.0191 0.4821" range="-90.0000 60.0000" type="hinge"/>
+                  <geom fromto="0.1558 0.0191 0.4821 0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="11_LeftForeArm" user="0.6643 0.0191 0.4821" pos="0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="11_LeftForeArm_z" pos="0.4103 0.0191 0.4821" range="-170.0000 10.0000" type="hinge"/>
+                    <geom fromto="0.4303 0.0191 0.4821 0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="11_LeftHand" user="0.7282 0.0191 0.4821" pos="0.6643 0.0191 0.4821">
+                      <geom pos="0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="11_LeftHand_x" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="11_LeftHand_y" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="11_LeftHand_z" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="11_RightUpLeg" user="-0.0849 0.0000 -0.4027" pos="0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="11_RightUpLeg_x" pos="-0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="11_RightUpLeg_y" pos="-0.0849 0.0000 -0.0248" range="-40.0000 90.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="11_RightUpLeg_z" pos="-0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="-0.0849 0.0000 -0.0448 -0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="11_RightLeg" user="-0.0849 0.0000 -0.7988" pos="-0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="11_RightLeg_x" pos="-0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="1" conaffinity="1" fromto="-0.0849 0.0000 -0.4227 -0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="11_RightFoot" user="-0.0849 -0.1308 -0.8464" pos="-0.0849 0.0000 -0.7988">
+            <geom contype="1" conaffinity="1" pos="-0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 -0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="11_RightFoot_x" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="11_RightFoot_y" pos="-0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="11_RightFoot_z" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+      <body name="11_LeftUpLeg" user="0.0849 0.0000 -0.4027" pos="-0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="11_LeftUpLeg_x" pos="0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="11_LeftUpLeg_y" pos="0.0849 0.0000 -0.0248" range="-90.0000 40.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="11_LeftUpLeg_z" pos="0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="0.0849 0.0000 -0.0448 0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="11_LeftLeg" user="0.0849 0.0000 -0.7988" pos="0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="11_LeftLeg_x" pos="0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="2" conaffinity="2" fromto="0.0849 0.0000 -0.4227 0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="11_LeftFoot" user="0.0849 -0.1308 -0.8464" pos="0.0849 0.0000 -0.7988">
+            <geom contype="2" conaffinity="2" pos="0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="11_LeftFoot_x" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="11_LeftFoot_y" pos="0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="11_LeftFoot_z" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="12_Hips" user="0.0000 0.0146 0.0054" pos="0.0000 0.0146 0.0054">
+      <geom fromto="-0.0750 0.0506 0.0054 0.0750 0.0506 0.0054" size="0.0820" type="capsule"/>
+      <joint armature="0" damping="0" limited="false" name="12_Hips" pos="0.0000 0.0000 0.0000" stiffness="0" type="free"/>
+      <body name="12_Spine" user="0.0000 0.0591 0.1523" pos="0.0000 0.0146 0.0054">
+        <geom fromto="-0.0550 0.0369 0.1109 0.0550 0.0369 0.1109" size="0.0590" type="capsule"/>
+        <joint axis="1.0000 0.0000 0.0000" name="12_Spine_x" pos="0.0000 0.0439 0.0658" range="-30.0000 45.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="12_Spine_y" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="12_Spine_z" pos="0.0000 0.0439 0.0658" range="-30.0000 30.0000" type="hinge"/>
+        <body name="12_Spine1" user="0.0000 0.0668 0.2397" pos="0.0000 0.0591 0.1523">
+          <geom fromto="-0.0600 0.0370 0.1960 0.0600 0.0370 0.1960" size="0.0540" type="capsule"/>
+          <joint axis="1.0000 0.0000 0.0000" name="12_Spine1_x" pos="0.0000 0.0591 0.1523" range="-30.0000 45.0000" type="hinge"/>
+          <joint axis="0.0000 1.0000 0.0000" name="12_Spine1_y" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <joint axis="0.0000 0.0000 1.0000" name="12_Spine1_z" pos="0.0000 0.0591 0.1523" range="-30.0000 30.0000" type="hinge"/>
+          <body name="12_Spine2" user="0.0000 0.0668 0.3275" pos="0.0000 0.0668 0.2397">
+            <geom fromto="-0.0575 0.0308 0.2896 0.0575 0.0308 0.2896" size="0.0570" type="capsule"/>
+            <joint axis="1.0000 0.0000 0.0000" name="12_Spine2_x" pos="0.0000 0.0668 0.2397" range="-30.0000 45.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="12_Spine2_y" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="12_Spine2_z" pos="0.0000 0.0668 0.2397" range="-30.0000 30.0000" type="hinge"/>
+            <body name="12_Spine3" user="0.0000 0.0240 0.5074" pos="0.0000 0.0668 0.3275">
+              <geom fromto="-0.0550 0.0274 0.3914 0.0550 0.0274 0.3914" size="0.0620" type="capsule"/>
+              <joint axis="1.0000 0.0000 0.0000" name="12_Spine3_x" pos="0.0000 0.0668 0.3275" range="-30.0000 45.0000" type="hinge"/>
+              <joint axis="0.0000 1.0000 0.0000" name="12_Spine3_y" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <joint axis="0.0000 0.0000 1.0000" name="12_Spine3_z" pos="0.0000 0.0668 0.3275" range="-30.0000 30.0000" type="hinge"/>
+              <body name="12_Neck" user="0.0000 0.0129 0.6768" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="12_Neck_x" pos="0.0000 0.0339 0.5579" range="-30.0000 45.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="12_Neck_y" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="12_Neck_z" pos="0.0000 0.0339 0.5579" range="-30.0000 30.0000" type="hinge"/>
+                <geom fromto="0.0000 0.0304 0.5336 0.0000 0.0164 0.6131" size="0.0370" type="capsule"/>
+                <body name="12_Head" user="0.0000 0.0129 0.8188" pos="0.0000 0.0129 0.6768">
+                  <geom pos="0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom pos="-0.0200 -0.0471 0.6968" size="0.0150" type="sphere"/>
+                  <geom fromto="0.0000 0.0129 0.6543 0.0000 0.0129 0.7013" size="0.0680" type="capsule"/>
+                  <joint axis="1.0000 0.0000 0.0000" name="12_Head_x" pos="0.0000 0.0129 0.6768" range="-30.0000 45.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="12_Head_y" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="12_Head_z" pos="0.0000 0.0129 0.6768" range="-30.0000 30.0000" type="hinge"/>
+                </body>
+              </body>
+              <body name="12_RightShoulder" user="-0.1708 0.0191 0.4821" pos="0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="12_RightShoulder_x" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="12_RightShoulder_y" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="12_RightShoulder_z" pos="-0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="-0.0406 0.0191 0.4821 -0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="12_RightArm" user="-0.4103 0.0191 0.4821" pos="-0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="12_RightArm_x" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="12_RightArm_y" pos="-0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="12_RightArm_z" pos="-0.1708 0.0191 0.4821" range="-60.0000 90.0000" type="hinge"/>
+                  <geom fromto="-0.1558 0.0191 0.4821 -0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="12_RightForeArm" user="-0.6643 0.0191 0.4821" pos="-0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="12_RightForeArm_z" pos="-0.4103 0.0191 0.4821" range="-10.0000 170.0000" type="hinge"/>
+                    <geom fromto="-0.4303 0.0191 0.4821 -0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="12_RightHand" user="-0.7282 0.0191 0.4821" pos="-0.6643 0.0191 0.4821">
+                      <geom pos="-0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="12_RightHand_x" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="12_RightHand_y" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="12_RightHand_z" pos="-0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+              <body name="12_LeftShoulder" user="0.1708 0.0191 0.4821" pos="-0.0000 0.0240 0.5074">
+                <joint axis="1.0000 0.0000 0.0000" name="12_LeftShoulder_x" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 1.0000 0.0000" name="12_LeftShoulder_y" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <joint axis="0.0000 0.0000 1.0000" name="12_LeftShoulder_z" pos="0.0286 0.0191 0.4821" range="-20.0000 20.0000" type="hinge"/>
+                <geom fromto="0.0406 0.0191 0.4821 0.1228 0.0191 0.4821" size="0.0590" type="capsule"/>
+                <body name="12_LeftArm" user="0.4103 0.0191 0.4821" pos="0.1708 0.0191 0.4821">
+                  <joint axis="1.0000 0.0000 0.0000" name="12_LeftArm_x" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 1.0000 0.0000" name="12_LeftArm_y" pos="0.1708 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                  <joint axis="0.0000 0.0000 1.0000" name="12_LeftArm_z" pos="0.1708 0.0191 0.4821" range="-90.0000 60.0000" type="hinge"/>
+                  <geom fromto="0.1558 0.0191 0.4821 0.4253 0.0191 0.4821" size="0.0340" type="capsule"/>
+                  <body name="12_LeftForeArm" user="0.6643 0.0191 0.4821" pos="0.4103 0.0191 0.4821">
+                    <joint axis="0.0000 0.0000 1.0000" name="12_LeftForeArm_z" pos="0.4103 0.0191 0.4821" range="-170.0000 10.0000" type="hinge"/>
+                    <geom fromto="0.4303 0.0191 0.4821 0.6443 0.0191 0.4821" size="0.0300" type="capsule"/>
+                    <body name="12_LeftHand" user="0.7282 0.0191 0.4821" pos="0.6643 0.0191 0.4821">
+                      <geom pos="0.6683 0.0191 0.4821" size="0.0400" type="sphere"/>
+                      <joint axis="1.0000 0.0000 0.0000" name="12_LeftHand_x" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 1.0000 0.0000" name="12_LeftHand_y" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                      <joint axis="0.0000 0.0000 1.0000" name="12_LeftHand_z" pos="0.6643 0.0191 0.4821" range="-90.0000 90.0000" type="hinge"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="12_RightUpLeg" user="-0.0849 0.0000 -0.4027" pos="0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="12_RightUpLeg_x" pos="-0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="12_RightUpLeg_y" pos="-0.0849 0.0000 -0.0248" range="-40.0000 90.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="12_RightUpLeg_z" pos="-0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="-0.0849 0.0000 -0.0448 -0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="12_RightLeg" user="-0.0849 0.0000 -0.7988" pos="-0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="12_RightLeg_x" pos="-0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="1" conaffinity="1" fromto="-0.0849 0.0000 -0.4227 -0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="12_RightFoot" user="-0.0849 -0.1308 -0.8464" pos="-0.0849 0.0000 -0.7988">
+            <geom contype="1" conaffinity="1" pos="-0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 -0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="12_RightFoot_x" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="12_RightFoot_y" pos="-0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="12_RightFoot_z" pos="-0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+      <body name="12_LeftUpLeg" user="0.0849 0.0000 -0.4027" pos="-0.0000 0.0146 0.0054">
+        <joint axis="1.0000 0.0000 0.0000" name="12_LeftUpLeg_x" pos="0.0849 0.0000 -0.0248" range="-170.0000 20.0000" type="hinge"/>
+        <joint axis="0.0000 1.0000 0.0000" name="12_LeftUpLeg_y" pos="0.0849 0.0000 -0.0248" range="-90.0000 40.0000" type="hinge"/>
+        <joint axis="0.0000 0.0000 1.0000" name="12_LeftUpLeg_z" pos="0.0849 0.0000 -0.0248" range="-70.0000 70.0000" type="hinge"/>
+        <geom fromto="0.0849 0.0000 -0.0448 0.0849 0.0000 -0.3827" size="0.0490" type="capsule"/>
+        <body name="12_LeftLeg" user="0.0849 0.0000 -0.7988" pos="0.0849 0.0000 -0.4027">
+          <joint axis="1.0000 0.0000 0.0000" name="12_LeftLeg_x" pos="0.0849 0.0000 -0.4027" range="0.0000 170.0000" type="hinge"/>
+          <geom contype="2" conaffinity="2" fromto="0.0849 0.0000 -0.4227 0.0849 0.0000 -0.7788" size="0.0400" type="capsule"/>
+          <body name="12_LeftFoot" user="0.0849 -0.1308 -0.8464" pos="0.0849 0.0000 -0.7988">
+            <geom contype="2" conaffinity="2" pos="0.0849 -0.0514 -0.8306" size="0.0620 0.1000 0.0300" quat="1.0000 -0.0000 -0.0000 0.0000" type="box"/>
+            <joint axis="1.0000 0.0000 0.0000" name="12_LeftFoot_x" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+            <joint axis="0.0000 1.0000 0.0000" name="12_LeftFoot_y" pos="0.0849 0.0000 -0.7988" range="-60.0000 60.0000" type="hinge"/>
+            <joint axis="0.0000 0.0000 1.0000" name="12_LeftFoot_z" pos="0.0849 0.0000 -0.7988" range="-90.0000 90.0000" type="hinge"/>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

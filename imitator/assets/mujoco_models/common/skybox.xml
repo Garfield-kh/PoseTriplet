@@ -1,0 +1,8 @@
+<mujoco>
+  <asset>
+      <!--<texture name="skybox" type="skybox" builtin="gradient" rgb1=".4 .6 .8" rgb2="0 0 0"-->
+               <!--width="800" height="800" mark="random" markrgb="1 1 1"/>-->
+      <texture name="sky" type="skybox" file="./common/sky1.png" gridsize="3 4" gridlayout=".U..LFRB.D.."
+        width="8192" height="8192"/>
+  </asset>
+</mujoco>
